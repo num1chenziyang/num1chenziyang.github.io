@@ -23,12 +23,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/20250329.md",
+                "file": "source/_posts/test_chenziyang.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "20250329"
+              "title": "test_chenziyang"
             }
           }
         ],
@@ -190,8 +190,8 @@
   },
   "active": "b9a713f254d6268b",
   "lastOpenFiles": [
-    "source/_posts/test_chenziyang.md",
     "source/_posts/20250329.md",
+    "source/_posts/test_chenziyang.md",
     "db.json",
     "public/archives/2025/03/index.html",
     "public/archives/2025/03",
