@@ -21,14 +21,14 @@
             "id": "b9a713f254d6268b",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": ".obsidian/workspace.json",
-                "bFile": ".obsidian/workspace.json",
-                "aRef": ""
+                "file": "source/_posts/20250329.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: workspace.json"
+              "icon": "lucide-file",
+              "title": "20250329"
             }
           }
         ],
@@ -190,11 +190,20 @@
   },
   "active": "b9a713f254d6268b",
   "lastOpenFiles": [
-    "source/_posts/8898.md",
     "source/_posts/test_chenziyang.md",
-    "source/template/Front-matter",
-    "source/template",
-    "source/_posts/hello-world.md",
-    "source/attachments"
+    "source/_posts/20250329.md",
+    "db.json",
+    "public/archives/2025/03/index.html",
+    "public/archives/2025/03",
+    "public/2025/03/29/8898/index.html",
+    "public/2025/03/28/test_chenziyang/index.html",
+    "public/2025/03/27/hello-world/index.html",
+    "public/2025/03/29/8898",
+    "public/2025/03/28/test_chenziyang",
+    "public/2025/03/27/hello-world",
+    "public/2025/03/29",
+    "public/images/apple-touch-icon-next.png",
+    "source/_posts/8898.md",
+    "source/_posts/hello-world.md"
   ]
 }
