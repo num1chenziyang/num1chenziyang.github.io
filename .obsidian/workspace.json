@@ -18,18 +18,17 @@
             }
           },
           {
-            "id": "e55ea27cc0c9daf6",
+            "id": "b9a713f254d6268b",
             "type": "leaf",
             "state": {
               "type": "split-diff-view",
               "state": {
-                "aFile": ".obsidian/plugins/obsidian-git-2.32.1/data.json",
-                "bFile": ".obsidian/plugins/obsidian-git-2.32.1/data.json",
-                "aRef": "HEAD",
-                "bRef": ""
+                "aFile": ".obsidian/workspace.json",
+                "bFile": ".obsidian/workspace.json",
+                "aRef": ""
               },
               "icon": "diff",
-              "title": "Diff: data.json"
+              "title": "Diff: workspace.json"
             }
           }
         ],
@@ -189,8 +188,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e55ea27cc0c9daf6",
+  "active": "b9a713f254d6268b",
   "lastOpenFiles": [
+    "source/_posts/8898.md",
     "source/_posts/test_chenziyang.md",
     "source/template/Front-matter",
     "source/template",
