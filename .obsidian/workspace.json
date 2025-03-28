@@ -21,14 +21,15 @@
             "id": "e55ea27cc0c9daf6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "source/_posts/test_chenziyang.md",
-                "mode": "source",
-                "source": false
+                "aFile": ".obsidian/plugins/obsidian-git-2.32.1/data.json",
+                "bFile": ".obsidian/plugins/obsidian-git-2.32.1/data.json",
+                "aRef": "HEAD",
+                "bRef": ""
               },
-              "icon": "lucide-file",
-              "title": "test_chenziyang"
+              "icon": "diff",
+              "title": "Diff: data.json"
             }
           }
         ],
@@ -190,8 +191,10 @@
   },
   "active": "e55ea27cc0c9daf6",
   "lastOpenFiles": [
+    "source/_posts/test_chenziyang.md",
+    "source/template/Front-matter",
+    "source/template",
     "source/_posts/hello-world.md",
-    "source/attachments",
-    "source/_posts/test_chenziyang.md"
+    "source/attachments"
   ]
 }
