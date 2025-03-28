@@ -28,6 +28,8 @@ jobs:
         npm i -g hexo-cli
         npm i
         npm install css --save
+        npm uninstall hexo-renderer-marked --save
+        npm install hexo-renderer-marked@4.0.0 --save
         hexo clean
         hexo g
     - name: Deploy to Github Pages
