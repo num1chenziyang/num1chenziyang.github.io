@@ -34,7 +34,7 @@ jobs:
       env:
         GIT_NAME: num1chenziyang
         GIT_EMAIL: ${{ secrets.GIT_EMAIL }} 
-        REPO: https://num1chenziyang.github.io/
+        REPO: num1chenziyang.github.io
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         cd ./public && git init && git add .
