@@ -18,17 +18,17 @@
             }
           },
           {
-            "id": "b9a713f254d6268b",
+            "id": "e3a11750205106c9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/test_chenziyang.md",
+                "file": "source/_posts/hello-world.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "test_chenziyang"
+              "title": "hello-world"
             }
           }
         ],
@@ -188,10 +188,26 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b9a713f254d6268b",
+  "active": "e3a11750205106c9",
   "lastOpenFiles": [
+    "source/_posts/OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "source/_posts/hello-world.md",
+    "source/attachments/hello-world/Pasted image 20250330233205.png",
+    "source/attachments/hello-world",
+    "source/attachments/未命名.md",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
+    "source/template/Front-matter.md",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/6e5515d496c43e742bf710a8e0ddb76.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330224216.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程",
+    "source/attachments/新建文件夹",
+    "source/attachments/Pasted image 20250330224216.png",
+    "source/_posts/().md",
+    "source/_posts/8898.md",
     "source/_posts/20250329.md",
-    "source/_posts/test_chenziyang.md",
     "db.json",
     "public/archives/2025/03/index.html",
     "public/archives/2025/03",
@@ -199,11 +215,6 @@
     "public/2025/03/28/test_chenziyang/index.html",
     "public/2025/03/27/hello-world/index.html",
     "public/2025/03/29/8898",
-    "public/2025/03/28/test_chenziyang",
-    "public/2025/03/27/hello-world",
-    "public/2025/03/29",
-    "public/images/apple-touch-icon-next.png",
-    "source/_posts/8898.md",
-    "source/_posts/hello-world.md"
+    "public/images/apple-touch-icon-next.png"
   ]
 }
