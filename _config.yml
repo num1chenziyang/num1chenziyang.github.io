@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: ChenSir
+subtitle: '一旦出发，必须到达'
 description: ''
-keywords:
-author: John Doe
-language: en
+keywords: C/C++
+author: czy
+language: zh-CN
 timezone: ''
 
 # URL
@@ -105,3 +105,11 @@ deploy:
   type: 'git'
   repo: git@github.com:num1chenziyang/num1chenziyang.github.io.git
   branch: master
+
+# hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10
+
