@@ -4,35 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "319a6c502214d455",
+        "id": "1a29c07091a8cd95",
         "type": "tabs",
         "children": [
           {
-            "id": "a18fd404dcf6cca4",
-            "type": "leaf",
-            "state": {
-              "type": "pkmer-downloader",
-              "state": {},
-              "icon": "bookmark",
-              "title": "Pkmer Market"
-            }
-          },
-          {
-            "id": "e74bc6fa18e0132d",
+            "id": "4178fbfe225611ae",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+                "file": "source/_posts/hello-world/加密文章测试.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "1.OBSidian+HEXO+GitHub的笔记博客部署全流程"
+              "title": "加密文章测试"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -190,14 +179,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e74bc6fa18e0132d",
+  "active": "4178fbfe225611ae",
   "lastOpenFiles": [
-    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
-    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
-    "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
     "source/_posts/hello-world/hello-world.md",
     "source/_posts/hello-world/加密文章测试.md",
+    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
+    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
+    "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "source/template/通用模板.md",
+    "source/template/Front-matter.md",
     "db.json",
+    "public/images/cc-by-nc.svg",
+    "public/images/cc-by-nc-nd.svg",
+    "public/images/avatar.gif",
+    "public/archives/2025/04/index.html",
+    "public/archives/2025/04",
     "public/js/schemes/muse.js",
     "public/js/utils.js",
     "public/js/schemes",
@@ -205,19 +201,14 @@
     "public/js/next-boot.js",
     "public/js/motion.js",
     "public/js/local-search.js",
-    "public/js/bookmark.js",
-    "public/js/algolia-search.js",
-    "public/images/avatar.gif",
+    "public/images/apple-touch-icon-next.png",
+    "public/attachments/hello-world/Pasted image 20250330233205.png",
     "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
     "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
     "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
-    "public/attachments/hello-world/Pasted image 20250330233205.png",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
     "node_modules/hexo-generator-searchdb/README.md",
     "public/images/favicon-32x32-next.png",
-    "public/images/logo.svg",
-    "public/images/logo-algolia-nebula-blue-full.svg",
-    "public/images/favicon-16x16-next.png",
     "source/categories/index.md",
     "themes/hexo-theme-next/docs/zh-CN/CODE_OF_CONDUCT.md",
     "themes/hexo-theme-next/docs/zh-CN/README.md",
@@ -235,8 +226,6 @@
     "themes/hexo-theme-next-8.0.0/docs/ru/README.md",
     "themes/hexo-theme-next-8.0.0/docs/AUTHORS.md",
     "themes/hexo-theme-next-8.0.0/docs/AGPL3.md",
-    "themes/hexo-theme-next-8.0.0/README.md",
-    "themes/hexo-theme-next-8.0.0/LICENSE.md",
-    "source/tags/index.md"
+    "themes/hexo-theme-next-8.0.0/README.md"
   ]
 }
