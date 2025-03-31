@@ -11,14 +11,14 @@
             "id": "ca672cb99afe6c41",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "themes/hexo-theme-next",
-                "bFile": "themes/hexo-theme-next",
-                "aRef": ""
+                "file": "source/template/Front-matter.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: hexo-theme-next"
+              "icon": "lucide-file",
+              "title": "Front-matter"
             }
           }
         ]
@@ -179,20 +179,33 @@
       "obsidian-importer:Open Importer": false
     }
   },
-  "active": "ca672cb99afe6c41",
+  "active": "907dcdaa652376df",
   "lastOpenFiles": [
+    "source/categories/index.md",
+    "source/categories",
+    "source/about/index.md",
+    "source/about",
+    "source/tags/index.md",
+    "source/tags",
+    "db.json",
+    "public/attachments/pic/Exported image 20250328134042-1.png",
+    "public/attachments/pic/Exported image 20250328134057-2.png",
+    "public/attachments/pic/Exported image 20250328133921-1.png",
+    "public/attachments/pic/Exported image 20250328134110-0.png",
+    "public/attachments/pic/Exported image 20250328133954-1.png",
+    "public/attachments/pic/Exported image 20250328134235-0.png",
+    "public/attachments/pic/Exported image 20250328134009-1.png",
+    "public/attachments/pic/Exported image 20250328133930-2.png",
+    "public/attachments/pic/Exported image 20250328133845-0.png",
+    "public/2025/03/31/WORK/WQY 交接内容/4.易科腾加密卡/index.html",
+    "public/2025/03/31/SDLC_MYACC/M_yacc_基本介绍/3.sql_yacc.yy分析/index.html",
+    "public/2025/03/31/SDLC机器支持/4.mac 做盘指南/2.mac 格式化 u 盘/index.html",
+    "public/2025/03/31/SDLC机器支持/4.mac 做盘指南/3.国产架构说明/index.html",
+    "public/2025/03/31/SDLC机器支持/4.mac 做盘指南/1.mac 制作 u 盘启动盘/index.html",
+    "public/2025/03/31/SDLC流程记录/流程类/1.发版流程/index.html",
+    "public/images/logo-algolia-nebula-blue-full.svg",
     "source/_posts/SDLC编译工作/（实战）7.New_Start_V6-aarch64/（前言）机器详情.md",
-    "themes/hexo-theme-next/package-lock.json",
-    "themes/hexo-theme-next/node_modules/mocha/node_modules/cliui/build/lib/string-utils.js",
-    "themes/hexo-theme-next/node_modules/mocha/node_modules/cliui/build/lib/index.js",
-    "themes/hexo-theme-next/node_modules/mocha/node_modules/cliui/build/lib",
-    "themes/hexo-theme-next/node_modules/mocha/node_modules/cliui/build/index.cjs",
-    "themes/hexo-theme-next/node_modules/mocha/node_modules/cliui/build",
-    "themes/hexo-theme-next/node_modules/stylelint/node_modules/ignore/index.js",
-    "themes/hexo-theme-next/node_modules/stylelint/node_modules/ignore/LICENSE-MIT",
-    "themes/hexo-theme-next/node_modules/hexo-renderer-marked/lib/renderer.js",
     "themes/hexo-theme-next/node_modules/hexo-renderer-marked/README.md",
-    "themes/hexo-theme-next/node_modules/hexo-renderer-marked/package.json",
     "themes/hexo-theme-next/node_modules/wrap-ansi/node_modules/strip-ansi/readme.md",
     "themes/hexo-theme-next/node_modules/global-prefix/node_modules/which/CHANGELOG.md",
     "themes/hexo-theme-next/node_modules/chai/ReleaseNotes.md",
@@ -213,19 +226,6 @@
     "themes/hexo-theme-next/node_modules/@eslint/js/README.md",
     "themes/hexo-theme-next/node_modules/@bcoe/v8-coverage/README.md",
     "themes/hexo-theme-next/node_modules/istanbul-lib-report/README.md",
-    "themes/hexo-theme-next/node_modules/istanbul-lib-report/CHANGELOG.md",
-    "themes/hexo-theme-next/node_modules/istanbul-lib-coverage/README.md",
-    "themes/hexo-theme-next/node_modules/istanbul-lib-coverage/CHANGELOG.md",
-    "themes/hexo-theme-next/node_modules/yargs-parser/README.md",
-    "themes/hexo-theme-next/node_modules/psl/browserstack-logo.svg",
-    "themes/hexo-theme-next/node_modules/highlight.js/styles/pojoaque.jpg",
-    "themes/hexo-theme-next/node_modules/highlight.js/styles/brown-papersq.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
-    "source/attachments/hello-world/Pasted image 20250330233205.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/6e5515d496c43e742bf710a8e0ddb76.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330224216.png"
+    "themes/hexo-theme-next/node_modules/istanbul-lib-report/CHANGELOG.md"
   ]
 }
