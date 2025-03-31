@@ -2,7 +2,8 @@
 title: OBSidian+HEXO+GitHub的笔记博客部署全流程
 date: 2025-03-30 21:40:11
 categories: 笔记博客搭建
-tags:
+tags: 
+password:
 ---
 根据以下文章部署：
 [OBSidian与HEXO的同步维护方案 | Kokutou's Blog](https://kokutou.top/posts/24083/index.html)
