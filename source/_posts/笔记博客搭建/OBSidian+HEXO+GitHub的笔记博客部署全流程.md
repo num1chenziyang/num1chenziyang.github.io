@@ -24,19 +24,17 @@ password:
 # Step 2 - Git初始化配置
 √
 
-```shell
-hexo clean  # 清除缓存  
-hexo g      # 生成静态网页  
-hexo d      # 部署到Github
+```bash
+hexo clean && hexo g && hexo d && hexo s
+##执行顺序：1.清理旧文件 → 2.生成新文件 → 3.部署到远程 → 4.启动本地预览
 ```
 
 执行完上述命令后，进入这个网页，有Hexo的网页展示，即代表基本的GitHub+HEXO搭建成功
-
 ```text
 用户名.github.io
 ```
 
-可以继续跟着教程配置NexT主题
+可以继续跟着教程配置Next主题
 
 ---
 
@@ -78,7 +76,7 @@ GitHub Actions 是 ​**GitHub 官方提供的自动化工作流工具**，允�
 # Step 4 - Obisidian 以及 Obisidian Git插件
 ## 1.Obisidian插件
 不用魔法的话，进不去插件商城。本人使用pkmer
-![](../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png)
+![](../../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png)
 
 
 ## 2.设置模板
@@ -96,7 +94,7 @@ GitHub Actions 是 ​**GitHub 官方提供的自动化工作流工具**，允�
 ```
 指的是下图：**打开目标仓库 → 点击顶部 ​Settings → Secrets → Actions → New repository secret**
 
-![](../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png)
+![](../../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png)
 
 
 ## 2.部署失败解决方法
@@ -122,9 +120,9 @@ vim .github/workflows/deployment.yml
 ### 3.ERROR Plugin load failed: hexo-renderer-marked
 虽然这是一个报错，但是流程Install dependencies & Generate static files并未报错：
 外面看：
-![](../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png)
+![](../../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png)
 内部报错：
-![](../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted%20image%2020250330232147.png)
+![](../../attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted%20image%2020250330232147.png)
 
 这会导致网页无法加载，最终看了一下内部的部署日志才看到，原因是hexo-renderer-marked的版本问题。所以**部署日志还是非常重要的**。解决方法同Error: Cannot find module 'css'，安装正确的hexo-renderer-marked版本即可，至于哪个版本正确，我也是在网上搜的，4.0就没问题。
 ```shell
