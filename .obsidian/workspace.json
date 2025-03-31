@@ -4,35 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "319a6c502214d455",
+        "id": "07e5ac26bfd69878",
         "type": "tabs",
         "children": [
           {
-            "id": "a18fd404dcf6cca4",
-            "type": "leaf",
-            "state": {
-              "type": "pkmer-downloader",
-              "state": {},
-              "icon": "bookmark",
-              "title": "Pkmer Market"
-            }
-          },
-          {
-            "id": "e3a11750205106c9",
+            "id": "5dec8267ea84f4c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/hello-world.md",
+                "file": "source/_posts/笔记博客搭建/OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "hello-world"
+              "title": "OBSidian+HEXO+GitHub的笔记博客部署全流程"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -185,21 +174,28 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "pkmer:Open Pkmer Market": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-importer:Open Importer": false
     }
   },
-  "active": "e3a11750205106c9",
+  "active": "5dec8267ea84f4c4",
   "lastOpenFiles": [
-    "source/_posts/OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
-    "source/_posts/hello-world.md",
+    "source/_posts/笔记博客搭建/hello-world.md",
+    "source/_posts/笔记博客搭建/OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "scaffolds/draft.md",
+    "scaffolds/page.md",
+    "scaffolds/post.md",
+    "source/template/Front-matter.md",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
+    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
     "source/attachments/hello-world/Pasted image 20250330233205.png",
+    "source/_posts/hello-world.md",
+    "source/_posts/OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
     "source/attachments/hello-world",
     "source/attachments/未命名.md",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
-    "source/template/Front-matter.md",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
-    "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
     "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/6e5515d496c43e742bf710a8e0ddb76.png",
     "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330224216.png",
     "source/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程",
