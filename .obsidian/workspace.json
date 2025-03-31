@@ -23,7 +23,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/categories/index.md",
                 "mode": "source",
                 "source": false
               },
@@ -192,6 +192,8 @@
   },
   "active": "907dcdaa652376df",
   "lastOpenFiles": [
+    "source/tags/index.md",
+    "source/about/index.md",
     "themes/hexo-theme-next/test/tags/tabs.js",
     "themes/hexo-theme-next/test/tags/video.js",
     "themes/hexo-theme-next/test/validate/index.js",
@@ -202,7 +204,6 @@
     "themes/hexo-theme-next/test/tags/link-grid.js",
     "themes/hexo-theme-next/test/tags/index.js",
     "themes/hexo-theme-next/test/tags/group-pictures.js",
-    "themes/hexo-theme-next/test/tags/center-quote.js",
     "themes/hexo-theme-next/source/images/logo.svg",
     "themes/hexo-theme-next/source/images/logo-algolia-nebula-blue-full.svg",
     "themes/hexo-theme-next/source/images/favicon-32x32-next.png",
@@ -236,7 +237,6 @@
     "themes/hexo-theme-next-8.23.0/hexo-theme-next-8.23.0/docs/zh-CN/CONTRIBUTING.md",
     "themes/hexo-theme-next-8.23.0/hexo-theme-next-8.23.0/docs/zh-CN/CODE_OF_CONDUCT.md",
     "themes/hexo-theme-next-8.23.0/hexo-theme-next-8.23.0/docs/ru/README.md",
-    "themes/hexo-theme-next-8.23.0/hexo-theme-next-8.23.0/docs/AUTHORS.md",
-    "themes/hexo-theme-next-8.23.0/hexo-theme-next-8.23.0/docs/AGPL3.md"
+    "themes/hexo-theme-next-8.23.0/hexo-theme-next-8.23.0/docs/AUTHORS.md"
   ]
 }
