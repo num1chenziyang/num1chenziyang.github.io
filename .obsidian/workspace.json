@@ -23,12 +23,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/categories/index.md",
+                "file": "source/_posts/笔记博客搭建/OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "OBSidian+HEXO+GitHub的笔记博客部署全流程"
             }
           }
         ],
@@ -190,8 +190,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "46b3e43bbe2f6781",
+  "active": "e74bc6fa18e0132d",
   "lastOpenFiles": [
+    "node_modules/highlight.js/styles/tomorrow-night.css",
+    "source/categories/index.md",
     "themes/hexo-theme-next/source/css/_common/outline/header/header.styl",
     "themes/hexo-theme-next/source/css/_common/scaffolding/tags/tags.styl",
     "themes/hexo-theme-next/source/css/_common/scaffolding/tags/tabs.styl",
@@ -202,7 +204,6 @@
     "themes/hexo-theme-next/source/css/_common/scaffolding/tags/label.styl",
     "themes/hexo-theme-next/source/css/_common/scaffolding/highlight/highlight.styl",
     "themes/hexo-theme-next/source/css/_common/scaffolding/tags/group-pictures.styl",
-    "themes/hexo-theme-next/source/css/_common/scaffolding/tags/blockquote-center.styl",
     "themes/hexo-theme-next/source/images/logo.svg",
     "themes/hexo-theme-next/source/images/logo-algolia-nebula-blue-full.svg",
     "themes/hexo-theme-next/source/images/favicon-32x32-next.png",
@@ -236,7 +237,6 @@
     "themes/hexo-theme-next-8.23.0/hexo-theme-next/docs/zh-CN/README.md",
     "themes/hexo-theme-next-8.23.0/hexo-theme-next/docs/ru/README.md",
     "themes/hexo-theme-next-8.23.0/hexo-theme-next/docs/zh-CN/CONTRIBUTING.md",
-    "themes/hexo-theme-next-8.23.0/hexo-theme-next/docs/zh-CN/CODE_OF_CONDUCT.md",
-    "themes/hexo-theme-next-8.23.0/hexo-theme-next/languages/README.md"
+    "themes/hexo-theme-next-8.23.0/hexo-theme-next/docs/zh-CN/CODE_OF_CONDUCT.md"
   ]
 }
