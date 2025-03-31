@@ -18,8 +18,15 @@
   }
 
   .category-list-count {
-    font-size: $font-size-smallest;
-    badge();
+    color: $grey;
+
+    &::before {
+      content: ' (';
+    }
+
+    &::after {
+      content: ') ';
+    }
   }
 
   .category-list-child {

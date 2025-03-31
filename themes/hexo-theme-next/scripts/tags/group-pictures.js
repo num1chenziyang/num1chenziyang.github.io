@@ -10,9 +10,9 @@ const LAYOUTS = {
     2: [2]
   },
   3: {
-    1: [1, 2],
-    2: [2, 1],
-    3: [3]
+    1: [3],
+    2: [1, 2],
+    3: [2, 1]
   },
   4: {
     1: [1, 2, 1],
@@ -80,7 +80,7 @@ function groupBy(group, data) {
 
 const templates = {
 
-  dispatch(pictures, group, layout) {
+  dispatch: function(pictures, group, layout) {
     const rule = LAYOUTS[group] ? LAYOUTS[group][layout] : null;
     return rule ? this.getHTML(groupBy(rule, pictures)) : this.defaults(pictures);
   },
@@ -94,7 +94,7 @@ const templates = {
    *
    * @param pictures
    */
-  defaults(pictures) {
+  defaults: function(pictures) {
     const ROW_SIZE = 3;
     const rows = pictures.length / ROW_SIZE;
     const pictureArr = [];
@@ -106,13 +106,13 @@ const templates = {
     return this.getHTML(pictureArr);
   },
 
-  getHTML(rows) {
+  getHTML: function(rows) {
     return rows.map(row => {
       return `<div class="group-picture-row">${this.getColumnHTML(row)}</div>`;
     }).join('');
   },
 
-  getColumnHTML(pictures) {
+  getColumnHTML: function(pictures) {
     return pictures.map(picture => {
       return `<div class="group-picture-column">${picture}</div>`;
     }).join('');
@@ -120,14 +120,13 @@ const templates = {
 };
 
 module.exports = ctx => function(args, content) {
-  let group, layout;
-  if (args[0]) {
-    [group, layout] = args[0].split('-');
-  }
+  args = args[0].split('-');
+  const group = parseInt(args[0], 10);
+  const layout = parseInt(args[1], 10);
 
   content = ctx.render.renderSync({ text: content, engine: 'markdown' });
 
-  const pictures = content.match(/(<a[^>]*>((?!<\/a)(.|\n))+<\/a>)|(<img[^>]+>)/g);
+  const pictures = content.match(/<img[\s\S]*?>/g);
 
   return `<div class="group-picture">${templates.dispatch(pictures, group, layout)}</div>`;
 };

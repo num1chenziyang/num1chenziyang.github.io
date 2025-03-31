@@ -5,30 +5,26 @@
 const { parse } = require('url');
 
 /**
- * Export theme config
+ * Export theme config to js
  */
 hexo.extend.helper.register('next_config', function() {
-  const { config, theme, url_for, __ } = this;
+  const { config, theme, next_version, __ } = this;
   const exportConfig = {
     hostname  : parse(config.url).hostname || config.url,
     root      : config.root,
-    images    : url_for(theme.images),
     scheme    : theme.scheme,
-    darkmode  : theme.darkmode,
-    version   : this.next_version,
+    version   : next_version,
     exturl    : theme.exturl,
     sidebar   : theme.sidebar,
-    hljswrap  : theme.highlight.enable && config.highlight.wrap,
-    copycode  : theme.codeblock.copy_button,
-    fold      : theme.codeblock.fold,
+    copycode  : theme.codeblock.copy_button.enable,
     bookmark  : theme.bookmark,
+    fancybox  : theme.fancybox,
     mediumzoom: theme.mediumzoom,
     lazyload  : theme.lazyload,
     pangu     : theme.pangu,
     comments  : theme.comments,
-    stickytabs: theme.tabs.sticky,
     motion    : theme.motion,
-    prism     : theme.prism.enable && !config.prismjs.preprocess,
+    prism     : config.prismjs.enable && !config.prismjs.preprocess,
     i18n      : {
       placeholder: __('search.placeholder'),
       empty      : __('search.empty', '${query}'),
@@ -36,7 +32,7 @@ hexo.extend.helper.register('next_config', function() {
       hits       : __('search.hits', '${hits}')
     }
   };
-  if (config.algolia && theme.algolia_search?.enable) {
+  if (config.algolia && theme.algolia_search && theme.algolia_search.enable) {
     exportConfig.algolia = {
       appID    : config.algolia.applicationID || config.algolia.appId,
       apiKey   : config.algolia.apiKey,
@@ -44,23 +40,12 @@ hexo.extend.helper.register('next_config', function() {
       hits     : theme.algolia_search.hits
     };
   }
-  if (config.search && theme.local_search?.enable) {
-    exportConfig.path = url_for(config.search.path);
+  if (config.search && theme.local_search && theme.local_search.enable) {
+    exportConfig.path = config.search.path;
     exportConfig.localsearch = theme.local_search;
   }
-  return exportConfig;
-});
-
-hexo.extend.helper.register('next_config_unique', function() {
-  const { page, is_home, is_post } = this;
-  return {
-    sidebar  : page.sidebar || '',
-    isHome   : is_home(),
-    isPost   : is_post(),
-    lang     : page.lang,
-    comments : page.comments || '',
-    permalink: page.permalink || '',
-    path     : page.path || '',
-    title    : page.title || ''
-  };
+  return `<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = ${JSON.stringify(exportConfig)};
+  </script>`;
 });

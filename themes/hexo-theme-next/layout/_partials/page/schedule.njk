@@ -1,3 +1,6 @@
 <div class="event-list">
 </div>
-{{- next_js('schedule.js', { pjax: true }) }}
+<script{{ pjax }}>
+  CONFIG.calendar = {{ theme.calendar | safedump }};
+</script>
+{{- next_js('schedule.js', true) }}

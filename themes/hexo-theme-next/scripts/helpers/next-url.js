@@ -3,7 +3,7 @@
 const { htmlTag } = require('hexo-util');
 const { parse } = require('url');
 
-module.exports = function(path, text, options = {}, decode = false) {
+module.exports = function(path, text, options = {}) {
   const { config, theme } = this;
   const data = parse(path);
   const siteHost = parse(config.url).hostname || config.url;
@@ -36,13 +36,17 @@ module.exports = function(path, text, options = {}, decode = false) {
     }
   }
 
+  if (attrs.class && Array.isArray(attrs.class)) {
+    attrs.class = attrs.class.join(' ');
+  }
+
   // If it's external link, rewrite attributes.
   if (data.protocol && data.hostname !== siteHost) {
     attrs.external = null;
 
     if (!theme.exturl) {
       // Only for simple link need to rewrite/add attributes.
-      attrs.rel = attrs.rel || 'noopener';
+      attrs.rel = 'noopener';
       attrs.target = '_blank';
     } else {
       // Remove rel attributes for `exturl` in main menu.
@@ -50,5 +54,5 @@ module.exports = function(path, text, options = {}, decode = false) {
     }
   }
 
-  return htmlTag(tag, attrs, decode ? decodeURI(text) : text, false);
+  return htmlTag(tag, attrs, decodeURI(text), false);
 };

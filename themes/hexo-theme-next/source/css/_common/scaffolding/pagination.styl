@@ -1,6 +1,6 @@
 $page-number-basic {
   display: inline-block;
-  margin: -1px 10px 0;
+  margin: -1px 10px 0 10px;
   padding: 0 10px;
 
   +mobile() {
@@ -8,16 +8,10 @@ $page-number-basic {
   }
 }
 
-$page-number-current {
-  background: $pagination-active-bg;
-  border-color: $pagination-active-border;
-  color: $pagination-active-color;
-}
-
 .pagination {
   border-top: 1px solid $pagination-border;
   margin: 120px 0 0;
-  text-align: $scheme-text-align;
+  text-align: center;
 
   .prev, .next, .page-number {
     @extend $page-number-basic;
@@ -50,6 +44,8 @@ $page-number-current {
   }
 
   .page-number.current {
-    @extend $page-number-current;
+    background: $pagination-active-bg;
+    border-color: $pagination-active-border;
+    color: $pagination-active-color;
   }
 }

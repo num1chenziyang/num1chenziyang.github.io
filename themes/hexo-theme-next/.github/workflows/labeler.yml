@@ -7,7 +7,6 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v5
-        # https://github.com/peaceiris/actions-label-commenter#work-with-other-auto-label-actions
+      - uses: actions/labeler@v2
         with:
-          repo-token: "${{ secrets.GH_PAT }}"
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"

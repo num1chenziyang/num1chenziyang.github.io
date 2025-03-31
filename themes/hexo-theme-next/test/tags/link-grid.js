@@ -1,12 +1,13 @@
 'use strict';
 
+require('chai').should();
 
 const result = `<div class="link-grid"><div class="link-grid-container">
-<object class="link-grid-image" data="/images/sample.png"></object>
+<div class="link-grid-image" style="background-image: url(/images/sample.png);"></div>
 <p>Theme NexT</p><p>Stay Simple. Stay NexT.</p>
 <a href="https://theme-next.js.org/"></a>
 </div><div class="link-grid-container">
-<object class="link-grid-image" data="/images/sample.png"></object>
+<div class="link-grid-image" style="background-image: url(/images/sample.png);"></div>
 <p>Theme NexT</p><p>Stay Simple. Stay NexT.</p>
 <a href="https://theme-next.js.org/"></a>
 </div></div>`;

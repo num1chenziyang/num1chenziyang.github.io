@@ -1,10 +1,4 @@
-{%- if theme.open_graph.enable %}
-  {%- if theme.open_graph.options %}
-    {{ open_graph(theme.open_graph.options) }}
-  {%- else %}
-    {{ open_graph() }}
-  {%- endif %}
-{%- endif %}
+{{ open_graph() }}
 
 {# https://github.com/theme-next/hexo-theme-next/issues/866 #}
 {%- set canonical = url | replace(r/index\.html$/, '') %}
@@ -12,13 +6,16 @@
   {%- set canonical = canonical | replace(r/\.html$/, '') %}
 {%- endif %}
 <link rel="canonical" href="{{ canonical }}">
-{%- if page.noindex %}
-<meta name="robots" content="noindex">
-{%- endif %}
-{# Exports some front-matter variables to Front-End #}
-{# https://hexo.io/docs/variables.html #}
-{{ next_data('page', next_config_unique()) }}
 
-{{ next_data('calendar',
-  theme.calendar if page.type === 'schedule' else '')
-}}
+{# Exports some front-matter variables to Front-End #}
+<script{{ pjax }} class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: {{ page.sidebar | safedump }},
+    isHome : {{ is_home() }},
+    isPost : {{ is_post() }},
+    lang   : '{{ page.lang }}'
+  };
+</script>
+
+{{- next_inject('head') }}

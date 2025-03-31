@@ -1,5 +1,6 @@
 'use strict';
 
+require('chai').should();
 const Hexo = require('hexo');
 const hexo = new Hexo();
 
@@ -46,14 +47,6 @@ ${result}
 
   it('classes, no-icon, summary and text', () => {
     postNote(['primary', 'no-icon'].concat(args), content).should.eql(`<details class="note primary no-icon">${summary}</p>
-</summary>
-${result}
-
-</details>`);
-  });
-
-  it('keywords in summary', () => {
-    postNote(['It\'s', 'danger'], content).should.eql(`<details class="note "><summary><p>It’s danger</p>
 </summary>
 ${result}
 

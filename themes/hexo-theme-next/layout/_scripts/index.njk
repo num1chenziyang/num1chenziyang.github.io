@@ -1,16 +1,12 @@
-{%- include 'vendors.njk' -%}
-
-{%- if theme.injects.comment.length > 1 %}
-  {{- next_js('comments.js') }}
-{%- endif %}
+{% include 'vendors.njk' %}
 
 {{- next_js('utils.js') }}
 {%- if theme.motion.enable %}
   {{- next_js('motion.js') }}
 {%- endif %}
 
-{%- if theme.sidebar.display !== 'remove' %}
-  {{- next_js('sidebar.js') }}
+{%- if theme.scheme === 'Muse' or theme.scheme === 'Mist' %}
+  {{- next_js('schemes/muse.js') }}
 {%- endif %}
 
 {{- next_js('next-boot.js') }}
@@ -18,5 +14,5 @@
   {{- next_js('bookmark.js') }}
 {%- endif %}
 {%- if theme.pjax %}
-  {{- next_js('pjax.js') }}
+  {% include 'pjax.njk' %}
 {%- endif %}

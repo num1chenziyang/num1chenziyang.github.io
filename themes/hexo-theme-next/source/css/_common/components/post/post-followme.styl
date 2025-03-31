@@ -1,56 +1,32 @@
-if (hexo-config('follow_me')) {
-  .followme {
-    color: $grey;
-    padding: 1em 1.5em;
-    text-align: center;
-    post-card();
+.followme {
+  color: $grey;
+  padding: 1em 1.5em;
+  text-align: center;
+  post-card();
 
-    .social-list {
-      flex-wrap();
+  .social-list {
+    flex-wrap();
 
-      .social-item {
-        margin: .5em 2em;
-        position: relative;
+    .social-item {
+      margin: .5em 2em;
 
-        +tablet-mobile() {
-          margin: .5em .75em;
-        }
+      +tablet-mobile() {
+        margin: .5em .75em;
+      }
+    }
+
+    .social-link {
+      border: 0;
+      display:inline-block;
+      text-align: center;
+
+      .icon {
+        font-size: 1.75em;
       }
 
-      .social-link {
-        border: 0;
-        // Make the hit area continious
+      .label {
         display: block;
-
-        .icon {
-          font-size: 1.75em;
-        }
-
-        .label {
-          display: block;
-          font-size: 14px;
-        }
-
-        &:hover + .social-item-img {
-          display: block;
-        }
-      }
-
-      span.social-link {
-        color: var(--link-color);
-
-        &:hover {
-          color: var(--link-hover-color);
-        }
-      }
-
-      .social-item-img {
-        display: none;
-        left: 50%;
-        max-width: $post-followme-img-width;
-        position: absolute;
-        transform: translate(-50%, 20px);
-        z-index: 1;
+        font-size: 14px;
       }
     }
   }

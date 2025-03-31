@@ -1,6 +1,5 @@
 /* global CONFIG */
 
-// https://developers.google.com/calendar/api/v3/reference/events/list
 (function() {
   // Initialization
   const calendar = {
@@ -62,7 +61,9 @@
     return 'about ' + Math.round(elapsed / msPerYear) + ' years' + tense;
   }
 
-  function buildEventDOM(tense, event, start, end) {
+  function buildEventDOM(tense, event) {
+    const start = event.start.dateTime;
+    const end = event.end.dateTime;
     const durationFormat = {
       weekday: 'short',
       hour   : '2-digit',
@@ -106,12 +107,12 @@
       // Clean the event list
       eventList.innerHTML = '';
       let prevEnd = 0; // used to decide where to insert an <hr>
-      const utc = new Date().getTimezoneOffset() * 60000;
 
       data.items.forEach(event => {
         // Parse data
-        const start = new Date(event.start.dateTime || (new Date(event.start.date).getTime() + utc));
-        const end = new Date(event.end.dateTime || (new Date(event.end.date).getTime() + utc));
+        const utc = new Date().getTimezoneOffset() * 60000;
+        const start = event.start.dateTime = new Date(event.start.dateTime || (new Date(event.start.date).getTime() + utc));
+        const end = event.end.dateTime = new Date(event.end.dateTime || (new Date(event.end.date).getTime() + utc));
 
         let tense = 'now';
         if (end < now) {
@@ -121,10 +122,10 @@
         }
 
         if (tense === 'future' && prevEnd < now) {
-          eventList.insertAdjacentHTML('beforeend', '<hr>');
+          eventList.innerHTML += '<hr>';
         }
 
-        eventList.insertAdjacentHTML('beforeend', buildEventDOM(tense, event, start, end));
+        eventList.innerHTML += buildEventDOM(tense, event);
         prevEnd = end;
       });
     });

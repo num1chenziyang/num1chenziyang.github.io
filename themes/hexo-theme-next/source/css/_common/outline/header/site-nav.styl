@@ -19,6 +19,10 @@
 
 .site-nav {
   +mobile() {
-    site-nav-hide-by-default();
+    display: none;
+  }
+
+  .site-nav-on & {
+    display: block;
   }
 }

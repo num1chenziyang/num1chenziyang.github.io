@@ -1,10 +1,6 @@
 // Header
 // --------------------------------------------------
-.column {
-  background: var(--content-bg-color);
-}
-
-header.header {
+.header-inner {
   align-items: center;
   display: flex;
   padding: 20px 0;
@@ -19,6 +15,8 @@ header.header {
   line-height: normal;
 
   .brand {
+    padding: 2px 1px;
+
     +mobile() {
       display: block;
     }
@@ -43,13 +41,13 @@ header.header {
 
 .use-motion {
   .logo-line:first-of-type {
-    transform: scaleX(0);
     transform-origin: left;
+    transform: scaleX(0);
   }
 
   .logo-line:last-of-type {
-    transform: scaleX(0);
     transform-origin: right;
+    transform: scaleX(0);
   }
 }
 
