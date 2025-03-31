@@ -11,10 +11,14 @@
             "id": "ca672cb99afe6c41",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "新标签页"
+              "type": "split-diff-view",
+              "state": {
+                "aFile": "themes/hexo-theme-next",
+                "bFile": "themes/hexo-theme-next",
+                "aRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: hexo-theme-next"
             }
           }
         ]
