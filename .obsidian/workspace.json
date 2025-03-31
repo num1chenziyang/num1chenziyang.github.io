@@ -4,24 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "b21e4f4ce368f8dc",
+        "id": "319a6c502214d455",
         "type": "tabs",
         "children": [
           {
-            "id": "ca672cb99afe6c41",
+            "id": "a18fd404dcf6cca4",
+            "type": "leaf",
+            "state": {
+              "type": "pkmer-downloader",
+              "state": {},
+              "icon": "bookmark",
+              "title": "Pkmer Market"
+            }
+          },
+          {
+            "id": "e74bc6fa18e0132d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/template/Front-matter.md",
+                "file": "source/about/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Front-matter"
+              "title": "index"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -167,6 +178,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-importer:Open Importer": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -174,58 +187,56 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "pkmer:Open Pkmer Market": false,
-      "obsidian-git:Open Git source control": false,
-      "obsidian-excalidraw-plugin:新建绘图文件": false,
-      "obsidian-importer:Open Importer": false
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "907dcdaa652376df",
   "lastOpenFiles": [
-    "source/categories/index.md",
-    "source/categories",
-    "source/about/index.md",
-    "source/about",
+    "themes/hexo-theme-next/source/css/_common/components/post/post-body.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/site-state.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-toggle.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-toc.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-nav.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-copyright.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-button.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-blogroll.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-author.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/sidebar-author-links.styl",
+    "themes/hexo-theme-next/source/css/_common/outline/sidebar/related-posts.styl",
+    "themes/hexo-theme-next/source/images/logo.svg",
+    "themes/hexo-theme-next/source/images/logo-algolia-nebula-blue-full.svg",
+    "themes/hexo-theme-next/source/images/favicon-32x32-next.png",
+    "themes/hexo-theme-next/source/images/favicon-16x16-next.png",
+    "themes/hexo-theme-next/source/images/apple-touch-icon-next.png",
+    "themes/hexo-theme-next/source/images/avatar.gif",
+    "themes/hexo-theme-next/docs/zh-CN/README.md",
+    "themes/hexo-theme-next/docs/zh-CN/CONTRIBUTING.md",
+    "themes/hexo-theme-next/docs/zh-CN/CODE_OF_CONDUCT.md",
+    "themes/hexo-theme-next/docs/ru/README.md",
+    "themes/hexo-theme-next/languages/README.md",
+    "themes/hexo-theme-next/docs/AUTHORS.md",
+    "themes/hexo-theme-next/docs/AGPL3.md",
+    "themes/hexo-theme-next/README.md",
+    "themes/hexo-theme-next/LICENSE.md",
+    "themes_1/themes/hexo-theme-next/source/images/logo.svg",
+    "themes_1/themes/hexo-theme-next/source/images/logo-algolia-nebula-blue-full.svg",
+    "themes_1/themes/hexo-theme-next/source/images/favicon-32x32-next.png",
+    "themes_1/themes/hexo-theme-next/source/images/favicon-16x16-next.png",
+    "themes_1/themes/hexo-theme-next/docs/zh-CN/CONTRIBUTING.md",
+    "themes_1/themes/hexo-theme-next/docs/zh-CN/README.md",
+    "themes_1/themes/hexo-theme-next/docs/zh-CN/CODE_OF_CONDUCT.md",
+    "themes_1/themes/hexo-theme-next/docs/ru/README.md",
+    "themes_1/themes/hexo-theme-next/languages/README.md",
+    "themes_1/themes/hexo-theme-next/docs/AUTHORS.md",
+    "themes_1/themes/hexo-theme-next/docs/AGPL3.md",
+    "themes_1/themes/hexo-theme-next/README.md",
+    "themes_1/themes/hexo-theme-next/LICENSE.md",
+    "themes/themes/hexo-theme-next/languages/README.md",
+    "source/_posts/笔记博客搭建/hello-world.md",
+    "source/_posts/笔记博客搭建/OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "source/_posts/hello-world.md",
     "source/tags/index.md",
-    "source/tags",
-    "db.json",
-    "public/attachments/pic/Exported image 20250328134042-1.png",
-    "public/attachments/pic/Exported image 20250328134057-2.png",
-    "public/attachments/pic/Exported image 20250328133921-1.png",
-    "public/attachments/pic/Exported image 20250328134110-0.png",
-    "public/attachments/pic/Exported image 20250328133954-1.png",
-    "public/attachments/pic/Exported image 20250328134235-0.png",
-    "public/attachments/pic/Exported image 20250328134009-1.png",
-    "public/attachments/pic/Exported image 20250328133930-2.png",
-    "public/attachments/pic/Exported image 20250328133845-0.png",
-    "public/2025/03/31/WORK/WQY 交接内容/4.易科腾加密卡/index.html",
-    "public/2025/03/31/SDLC_MYACC/M_yacc_基本介绍/3.sql_yacc.yy分析/index.html",
-    "public/2025/03/31/SDLC机器支持/4.mac 做盘指南/2.mac 格式化 u 盘/index.html",
-    "public/2025/03/31/SDLC机器支持/4.mac 做盘指南/3.国产架构说明/index.html",
-    "public/2025/03/31/SDLC机器支持/4.mac 做盘指南/1.mac 制作 u 盘启动盘/index.html",
-    "public/2025/03/31/SDLC流程记录/流程类/1.发版流程/index.html",
-    "public/images/logo-algolia-nebula-blue-full.svg",
-    "source/_posts/SDLC编译工作/（实战）7.New_Start_V6-aarch64/（前言）机器详情.md",
-    "themes/hexo-theme-next/node_modules/hexo-renderer-marked/README.md",
-    "themes/hexo-theme-next/node_modules/wrap-ansi/node_modules/strip-ansi/readme.md",
-    "themes/hexo-theme-next/node_modules/global-prefix/node_modules/which/CHANGELOG.md",
-    "themes/hexo-theme-next/node_modules/chai/ReleaseNotes.md",
-    "themes/hexo-theme-next/node_modules/chai/README.md",
-    "themes/hexo-theme-next/node_modules/chai/History.md",
-    "themes/hexo-theme-next/node_modules/chai/CONTRIBUTING.md",
-    "themes/hexo-theme-next/node_modules/chai/CODE_OF_CONDUCT.md",
-    "themes/hexo-theme-next/node_modules/foreground-child/README.md",
-    "themes/hexo-theme-next/node_modules/pathval/README.md",
-    "themes/hexo-theme-next/node_modules/pathval/CHANGELOG.md",
-    "themes/hexo-theme-next/node_modules/globals/readme.md",
-    "themes/hexo-theme-next/node_modules/v8-to-istanbul/README.md",
-    "themes/hexo-theme-next/node_modules/v8-to-istanbul/CHANGELOG.md",
-    "themes/hexo-theme-next/node_modules/locate-path/readme.md",
-    "themes/hexo-theme-next/node_modules/loupe/README.md",
-    "themes/hexo-theme-next/node_modules/loupe/CHANGELOG.md",
-    "themes/hexo-theme-next/node_modules/yargs/README.md",
-    "themes/hexo-theme-next/node_modules/@eslint/js/README.md",
-    "themes/hexo-theme-next/node_modules/@bcoe/v8-coverage/README.md",
-    "themes/hexo-theme-next/node_modules/istanbul-lib-report/README.md",
-    "themes/hexo-theme-next/node_modules/istanbul-lib-report/CHANGELOG.md"
+    "source/categories/index.md",
+    "source/about/index.md"
   ]
 }
