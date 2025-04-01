@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "2.NEXT主题的美化"
             }
           }
         ]
@@ -179,11 +179,33 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "907dcdaa652376df",
+  "active": "5dc45934f4d5b40f",
   "lastOpenFiles": [
+    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
+    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
+    "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "db.json",
+    "public/2025/04/01/OneNote/SDLC编译工作/（实战）编译后自测/1.数据库自测/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/（实战）6.mips64el-麒麟/（实战）6.mips64el-麒麟/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/（实战）4.arm64-centos7/（实战）4.arm64-centos7/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/（实战）1.openssl升级/（实战）1.openssl升级/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/（实战）3.power架构-AIX7.1/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/1.编译相关知识学习/1.C编译相关知识学习/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/1.编译相关知识学习/2.自动化编译工具/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/（实战）2.sw64-swos1.3.0/（实战）2.sw64-swos1.3.0/index.html",
+    "public/2025/04/01/OneNote/SDLC编译工作/2.编译环境搭建/1.项目编译环境搭建/index.html",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
+    "public/attachments/hello-world/Pasted image 20250330233205.png",
+    "public/images/bg.jpg",
+    "public/images/apple-touch-icon-next.png",
+    "source/images/bg.jpg",
+    "source/images/e2408b826a2c69652c11c66b91f8fc0.png",
+    "source/about/index.md",
     "source/tags/index.md",
     "source/categories/index.md",
-    "source/about/index.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/（实战）5.sw3231-Uos1050d.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/机器详情.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/5.IDS 编译适配.md",
@@ -204,28 +226,6 @@
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/5.ids系统问题.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/4.csdk系统问题.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/3.编译环境初步配置.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/2.AIX介绍.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/1.win外网连接密网某服务器.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）6.mips64el-麒麟/（实战）6.mips64el-麒麟.md",
-    "db.json",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）6.mips64el-麒麟/（实战）6.mips64el-麒麟/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）编译后自测/1.数据库自测/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/机器详情/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/4.CSDK 编译适配/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/5.IDS 编译适配/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/3.编译前工具问题/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/1.uos系统安装与配置/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/2.代码适配/index.html",
-    "public/2025/04/01/OneNote/SDLC编译工作/（实战）4.arm64-centos7/机器详情/index.html",
-    "public/images/cc-zero.svg",
-    "public/images/cc-by-nc.svg",
-    "public/images/cc-by-sa.svg",
-    "public/images/cc-by-nc-nd.svg",
-    "public/images/avatar.gif",
-    "public/images/apple-touch-icon-next.png",
-    "public/attachments/hello-world/Pasted image 20250330233205.png",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png"
+    "public/images/cc-zero.svg"
   ]
 }
