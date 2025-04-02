@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/_posts/笔记博客搭建/4.obsidian的mac与win同步方式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "4.obsidian的mac与win同步方式"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 286.5
+    "width": 200
   },
   "right": {
     "id": "4e1422c019425583",
@@ -181,14 +181,12 @@
   },
   "active": "5dc45934f4d5b40f",
   "lastOpenFiles": [
-    "source/about/index-陈子扬的MacBook Air.md",
-    "source/about/index.md",
-    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
-    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
-    "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
-    "source/_posts/笔记博客搭建/4.obsidian的mac与win同步方式.md",
     "source/_posts/笔记博客搭建/4.obsidian的mac与win同步方式-陈子扬的MacBook Air-2.md",
     "source/_posts/笔记博客搭建/4.obsidian的mac与win同步方式-陈子扬的MacBook Air.md",
+    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
+    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
+    "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "source/_posts/笔记博客搭建/4.obsidian的mac与win同步方式.md",
     "db.json",
     "public/2025/04/01/OneNote/SDLC编译工作/（实战）编译后自测/1.数据库自测/index.html",
     "public/2025/04/01/OneNote/SDLC编译工作/（实战）6.mips64el-麒麟/（实战）6.mips64el-麒麟/index.html",
@@ -208,6 +206,7 @@
     "public/images/apple-touch-icon-next.png",
     "source/images/bg.jpg",
     "source/images/e2408b826a2c69652c11c66b91f8fc0.png",
+    "source/about/index.md",
     "source/tags/index.md",
     "source/categories/index.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/（实战）5.sw3231-Uos1050d.md",
@@ -226,6 +225,7 @@
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/机器详情.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/8.ids代码问题.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/7.csdk代码问题.md",
+    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/6.java工具重做（usrcm）.md",
     "public/images/cc-zero.svg"
   ]
 }
