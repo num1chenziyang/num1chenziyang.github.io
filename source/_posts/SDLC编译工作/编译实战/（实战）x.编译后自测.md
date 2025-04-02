@@ -3,11 +3,11 @@ title: 1.数据库自测
 date: 2025-04-01 22:12:42
 categories:
   - SDLC编译工作
-  - （实战）编译后自测
+  - 编译实战
 tags:
   - 编译
-  - 数据库自测
-password: 9761565829chen
+  - 自测
+password:
 ---
 # （一）csdk验证
 ## 一.制作 csdk 的 ksh 文件
