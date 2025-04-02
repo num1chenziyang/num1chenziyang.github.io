@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
+                "file": "source/_posts/笔记博客搭建/4.mac同步测试.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.NEXT主题的美化"
+              "title": "4.mac同步测试"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 308.5
+    "width": 200
   },
   "right": {
     "id": "4e1422c019425583",
@@ -167,7 +167,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:新建绘图文件": false,
       "obsidian-importer:Open Importer": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
@@ -176,14 +175,16 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "pkmer:Open Pkmer Market": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
   "active": "5dc45934f4d5b40f",
   "lastOpenFiles": [
-    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
-    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
     "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "source/_posts/笔记博客搭建/4.mac同步测试.md",
+    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
+    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
     "db.json",
     "public/2025/04/01/OneNote/SDLC编译工作/（实战）编译后自测/1.数据库自测/index.html",
     "public/2025/04/01/OneNote/SDLC编译工作/（实战）6.mips64el-麒麟/（实战）6.mips64el-麒麟/index.html",
@@ -225,7 +226,6 @@
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/6.java工具重做（usrcm）.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/5.ids系统问题.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/4.csdk系统问题.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/3.编译环境初步配置.md",
     "public/images/cc-zero.svg"
   ]
 }
