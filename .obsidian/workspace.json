@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/about/index.md",
-                "mode": "source",
-                "source": false
+                "file": "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "2.NEXT主题的美化"
             }
           }
         ]
@@ -181,10 +181,16 @@
   },
   "active": "5dc45934f4d5b40f",
   "lastOpenFiles": [
-    "source/about/index-陈子扬的MacBook Air.md",
-    "source/about/index.md",
-    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
     "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
+    "source/_posts/OneNote/SDLC编译工作/（实战）2.sw64-swos1.3.0/（实战）2.sw64-swos1.3.0.md",
+    "source/_posts/笔记博客搭建/2.NEXT主题的美化-陈子扬的MacBook Air.md",
+    "source/about/index.md",
+    "source/about/index-陈子扬的MacBook Air.md",
+    "source/_posts/笔记博客搭建/2.NEXT主题的美化.md",
+    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/（实战）3.power架构-AIX7.1.md",
+    "source/_posts/OneNote/SDLC编译工作/（实战）6.mips64el-麒麟/（实战）6.mips64el-麒麟.md",
+    "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/（实战）5.sw3231-Uos1050d.md",
+    "source/_posts/OneNote/SDLC编译工作/（实战）4.arm64-centos7/（实战）4.arm64-centos7.md",
     "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
     "source/_posts/笔记博客搭建/4.obsidian的mac与win同步方式.md",
     "source/_posts/笔记博客搭建/4.obsidian的mac与win同步方式-陈子扬的MacBook Air-2.md",
@@ -210,22 +216,16 @@
     "source/images/e2408b826a2c69652c11c66b91f8fc0.png",
     "source/tags/index.md",
     "source/categories/index.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/（实战）5.sw3231-Uos1050d.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/机器详情.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/5.IDS 编译适配.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/4.CSDK 编译适配.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/3.编译前工具问题.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/2.代码适配.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）5.sw3231-Uos1050d/1.uos系统安装与配置.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）4.arm64-centos7/（实战）4.arm64-centos7.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）1.openssl升级/（实战）1.openssl升级.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）2.sw64-swos1.3.0/（实战）2.sw64-swos1.3.0.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）4.arm64-centos7/1.openssl3.2.2 升级.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）4.arm64-centos7/机器详情.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/（实战）3.power架构-AIX7.1.md",
     "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/机器详情.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/8.ids代码问题.md",
-    "source/_posts/OneNote/SDLC编译工作/（实战）3.power架构-AIX7.1/7.csdk代码问题.md",
     "public/images/cc-zero.svg"
   ]
 }
