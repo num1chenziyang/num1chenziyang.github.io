@@ -28,7 +28,8 @@ custom_file_path:
   #bodyEnd: source/_data/body-end.njk
   #variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
-  #style: source/_data/styles.styl
+  style: source/_data/styles.styl
+  #config: source/_data/next.yml
 
 
 # ---------------------------------------------------------------
@@ -67,8 +68,8 @@ custom_logo: #/uploads/custom-logo.jpg
 # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
 creative_commons:
   license: by-nc-sa
-  sidebar: false
-  post: false
+  sidebar: true
+  post: true
   language:
 
 
@@ -164,15 +165,12 @@ links_settings:
   # Available values: block | inline
   layout: block
 
-links:
-  #Title: http://yoursite.com
-
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
 toc:
   enable: true
   # Automatically add list number to toc.
-  number: true
+  number: false
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: true
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
@@ -200,14 +198,14 @@ language_switcher: false
 
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.
-  #since: 2015
+  since: 2025
 
   # Icon between year and copyright info.
   icon:
     # Icon name in Font Awesome. See: https://fontawesome.com/icons
-    name: fa fa-heart
+    name: heart
     # If you want to animate the icon, set it to true.
-    animated: false
+    animated: true
     # Change the color of icon, using Hex Code.
     color: "#ff0000"
 
@@ -215,7 +213,7 @@ footer:
   copyright:
 
   # Powered by Hexo & NexT
-  powered: true
+  powered: false
 
   # Beian ICP and gongan information for Chinese users. See: https://beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
@@ -409,7 +407,7 @@ github_banner:
 # ---------------------------------------------------------------
 
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
   host:
@@ -422,7 +420,7 @@ font:
   # Global font settings used for all elements inside <body>.
   global:
     external: true
-    family: Lato
+    family: Monda
     size:
 
   # Font settings for site title (.site-title).
@@ -434,7 +432,7 @@ font:
   # Font settings for headlines (<h1> to <h6>).
   headings:
     external: true
-    family:
+    family: Roboto Slab
     size:
 
   # Font settings for posts (.post-body).
@@ -828,7 +826,7 @@ motion:
 # Progress bar in the top during page loading.
 # For more information: https://github.com/HubSpot/pace
 pace:
-  enable: false
+  enable: true
   # Themes list:
   # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
   # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
@@ -942,3 +940,15 @@ vendors:
 css: css
 js: js
 images: images
+
+links_icon: link
+links_title: 友情链接
+links_layout: inline
+links:
+  yearito: http://choubin.site
+
+post_end_tag:
+  enabled: true  # 是否开启文末的本文结束标记
+  icon: paw # 结束标记之间的图标
+
+

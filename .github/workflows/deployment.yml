@@ -32,6 +32,7 @@ jobs:
         npm install hexo-renderer-marked@4.0.0 --save
         npm install hexo-blog-encrypt --save
         npm install hexo-generator-searchdb --save
+        npm install hexo-excerpt --save
         hexo clean
         hexo g
     - name: Deploy to Github Pages

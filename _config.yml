@@ -116,6 +116,15 @@ search:
 # 启用加密插件
 encrypt:
   enable: true
-  default_abstract: 这是一篇加密文章，请输入密码查看。
-  default_message: 密码错误，请重试。
+  theme: Up # 主题
+  abstract: '这是一篇加密文章，请输入密码查看'
+  message: '这是一篇加密文章，请输入密码查看'
+  wrong_pass_message: '窃取机密失败QAQ...'
+
+excerpt:
+  depth: 5       # 自动截取段落层级（默认提取前5层嵌套内容）
+  excerpt_excludes: []  # 排除的标签（如不需要过滤则留空）
+  more_excludes: []     # 排除的“阅读更多”标签
+  hideWholePostExcerpts: true  # 隐藏全文式摘要
+
 
