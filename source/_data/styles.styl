@@ -21,10 +21,23 @@ body {
 /* 头部导航栏透明 */
 .header-inner {
   background: rgba(255,255,255,0.8);
+  max-width: 1200px;    /* 默认值为960px，可调整为更大值 */
+  width: 90%;
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(0,0,0,0.3);
 }
 
+.main-inner {
+  max-width: 1200px;    /* 默认值为960px，可调整为更大值 */
+  width: 90%;           /* 使用百分比适配不同屏幕 */
+}
+
+/* 针对正文内容区域 */
+.post-body,
+.content {
+  padding: 15px 25px !important;  /* 上下15px，左右25px */
+  margin: 10px 0 !important;       /* 与其他区块的间距 */
+}
 
