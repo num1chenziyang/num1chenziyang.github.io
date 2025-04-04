@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/SDLC编译工作/编译实战/（实战）8.New_Start_V6-x86_64.md",
+                "file": "source/_posts/SI技术学习/刷题记录/2.算法刷题大纲.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "（实战）8.New_Start_V6-x86_64"
+              "title": "2.算法刷题大纲"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 272.5
+    "width": 201.5
   },
   "right": {
     "id": "88df74b9f1050d91",
@@ -182,10 +182,21 @@
       "obsidian-importer:Open Importer": false
     }
   },
-  "active": "fb6b15f3b6a8476d",
+  "active": "cc35812514bbcbe8",
   "lastOpenFiles": [
-    "source/_posts/SDLC编译工作/编译实战/（实战）7.New_Start_V6-aarch64.md",
+    "source/_posts/SI技术学习/刷题记录/1.编程语言介绍.md",
+    "source/_posts/SI技术学习/刷题记录/2.算法刷题大纲.md",
+    "source/template/SI技术学习模板.md",
+    "source/template/SDLC编译工作模板.md",
+    "source/template/通用模板.md",
+    "source/_posts/SDLC编译工作/编译环境搭建/1.项目编译环境搭建.md",
+    "source/_posts/SI技术学习/刷题记录",
+    "source/_posts/SI技术学习/数据库学习",
+    "source/_posts/SI技术学习/8S学习",
+    "source/_posts/SI刷题记录/未命名.md",
+    "source/_posts/SI技术学习",
     "source/_posts/SDLC编译工作/编译实战/（实战）8.New_Start_V6-x86_64.md",
+    "source/_posts/SDLC编译工作/编译实战/（实战）7.New_Start_V6-aarch64.md",
     "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
     "source/_posts/笔记博客搭建/5.obsidian的mac与win同步方式.md",
     "source/_posts/笔记博客搭建/4.NEXT搜索.md",
@@ -197,10 +208,6 @@
     "public/categories/SDLC编译工作/编译后自测/index.html",
     "public/tags/编译/index.html",
     "public/tags/测试/index.html",
-    "public/tags/openssl/index.html",
-    "public/categories/笔记博客搭建/index.html",
-    "public/categories/SDLC编译工作/index.html",
-    "public/archives/2025/index.html",
     "public/images/avatar.gif",
     "public/images/cc-by-nc-nd.svg",
     "public/images/cc-by-nc-sa.svg",
@@ -222,11 +229,6 @@
     "node_modules/css-select/node_modules/dom-serializer/README.md",
     "node_modules/css-what/readme.md",
     "node_modules/nth-check/README.md",
-    "node_modules/lodash.defaults/README.md",
-    "node_modules/hexo-excerpt/README.md",
-    "node_modules/boolbase/README.md",
-    "node_modules/css-select/README.md",
-    "node_modules/hexo-excerpt/node_modules/dom-serializer/README.md",
-    "themes/hexo-theme-next/source/lib/pace/README.md"
+    "node_modules/lodash.defaults/README.md"
   ]
 }
