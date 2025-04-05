@@ -27,6 +27,6 @@
     "hexo-server": "^3.0.0",
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-theme-landscape": "^1.1.0",
-    "highlight.js": "^9.18.5"
+    "highlight.js": "^10.7.3"
   }
 }
