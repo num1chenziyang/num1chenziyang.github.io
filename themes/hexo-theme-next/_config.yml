@@ -154,16 +154,9 @@ social:
   #Skype: skype:yourname?call|chat || fab fa-skype
 
 social_icons:
-  enable: true
+  enable: false
   icons_only: false
   transition: false
-
-# Blog rolls
-links_settings:
-  icon: fa fa-globe
-  title: Links
-  # Available values: block | inline
-  layout: block
 
 # Table of Contents in the Sidebar
 # Front-matter variable (unsupport wrap expand_all).
@@ -508,7 +501,7 @@ math:
 
 # Easily enable fast Ajax navigation on your website.
 # For more information: https://github.com/next-theme/pjax
-pjax: false
+pjax: true
 
 # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
 # For more information: https://fancyapps.com/fancybox
@@ -941,11 +934,26 @@ css: css
 js: js
 images: images
 
-links_icon: link
-links_title: 友情链接
-links_layout: inline
+# Blog rolls
+#links_settings:
+#  icon: fa fa-globe
+#  title: "友情链接"
+#  # Available values: block | inline
+#  layout: block
+#  links:
+#    yearito: http://choubin.site
+#    天凉の小站: https://dusk-wind.github.io
+
+#Blog rolls
+links_settings:
+  icon: fa fa-globe
+  title: "友情链接"
+  # Available values: block | inline
+  layout: block
+
 links:
   yearito: http://choubin.site
+  天凉の小站: https://dusk-wind.github.io
 
 post_end_tag:
   enabled: true  # 是否开启文末的本文结束标记

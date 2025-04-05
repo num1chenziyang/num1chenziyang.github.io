@@ -25,6 +25,7 @@
     "excalidraw-open-md": "checkbox",
     "title": "text",
     "categories": "multitext",
-    "password": "text"
+    "password": "text",
+    "date": "text"
   }
 }

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "db63ef5a6b1ad8d7",
+        "id": "26521cf55acb0ebc",
         "type": "tabs",
         "children": [
           {
-            "id": "cc35812514bbcbe8",
+            "id": "c3f37075fb51b462",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/SI技术学习/刷题记录/2.算法刷题大纲.md",
+                "file": "source/_posts/笔记博客搭建/6.NEXT添加音乐播放器.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2.算法刷题大纲"
+              "title": "6.NEXT添加音乐播放器"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 201.5
+    "width": 248.5
   },
   "right": {
     "id": "88df74b9f1050d91",
@@ -182,53 +182,52 @@
       "obsidian-importer:Open Importer": false
     }
   },
-  "active": "cc35812514bbcbe8",
+  "active": "c3f37075fb51b462",
   "lastOpenFiles": [
-    "source/_posts/SI技术学习/刷题记录/1.编程语言介绍.md",
-    "source/_posts/SI技术学习/刷题记录/2.算法刷题大纲.md",
+    "source/_posts/笔记博客搭建/4.NEXT搜索.md",
+    "source/_posts/笔记博客搭建/6.NEXT添加音乐播放器.md",
+    "source/template/笔记博客搭建模板.md",
     "source/template/SI技术学习模板.md",
     "source/template/SDLC编译工作模板.md",
-    "source/template/通用模板.md",
-    "source/_posts/SDLC编译工作/编译环境搭建/1.项目编译环境搭建.md",
-    "source/_posts/SI技术学习/刷题记录",
-    "source/_posts/SI技术学习/数据库学习",
-    "source/_posts/SI技术学习/8S学习",
-    "source/_posts/SI刷题记录/未命名.md",
-    "source/_posts/SI技术学习",
-    "source/_posts/SDLC编译工作/编译实战/（实战）8.New_Start_V6-x86_64.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）7.New_Start_V6-aarch64.md",
-    "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
     "source/_posts/笔记博客搭建/5.obsidian的mac与win同步方式.md",
-    "source/_posts/笔记博客搭建/4.NEXT搜索.md",
-    "source/_posts/笔记博客搭建/3.NEXT文章加密.md",
-    "source/_posts/笔记博客搭建/2.NEXT主题的美化（常用）.md",
-    "public/categories/SDLC编译工作/编译知识体系/index.html",
-    "public/categories/SDLC编译工作/编译环境搭建/index.html",
-    "public/categories/SDLC编译工作/编译实战/index.html",
-    "public/categories/SDLC编译工作/编译后自测/index.html",
-    "public/tags/编译/index.html",
-    "public/tags/测试/index.html",
-    "public/images/avatar.gif",
-    "public/images/cc-by-nc-nd.svg",
     "public/images/cc-by-nc-sa.svg",
-    "public/images/cc-by-nc.svg",
-    "public/images/cc-by-nd.svg",
-    "public/images/cc-by-sa.svg",
-    "public/images/cc-by.svg",
-    "public/images/cc-zero.svg",
+    "public/images/background.jpg",
     "public/images/apple-touch-icon-next.png",
-    "public/images/favicon-16x16-next.png",
-    "source/_posts/SDLC编译工作/编译后自测/编译后自测.md",
-    "node_modules/hexo-excerpt/node_modules/htmlparser2/README.md",
-    "node_modules/hexo-excerpt/node_modules/entities/readme.md",
-    "node_modules/hexo-excerpt/node_modules/domutils/readme.md",
-    "node_modules/hexo-excerpt/node_modules/domhandler/readme.md",
-    "node_modules/css-select/node_modules/domutils/readme.md",
-    "node_modules/css-select/node_modules/entities/readme.md",
-    "node_modules/css-select/node_modules/domhandler/readme.md",
-    "node_modules/css-select/node_modules/dom-serializer/README.md",
-    "node_modules/css-what/readme.md",
-    "node_modules/nth-check/README.md",
-    "node_modules/lodash.defaults/README.md"
+    "public/template/笔记博客搭建模板.html",
+    "public/template/SI技术学习模板.html",
+    "public/index.html",
+    "db.json",
+    "public/2025/04/03/SDLC编译工作/编译实战/（实战）8.New_Start_V6-x86_64/index.html",
+    "public/2025/04/03/SDLC编译工作/编译实战/（实战）7.New_Start_V6-aarch64/index.html",
+    "public/2025/04/01/SDLC编译工作/编译知识体系/2.自动化编译工具/index.html",
+    "public/2025/04/01/SDLC编译工作/编译实战/（实战）6.mips64el-麒麟/index.html",
+    "public/2025/04/01/SDLC编译工作/编译知识体系/1.C编译相关知识学习/index.html",
+    "public/2025/04/01/SDLC编译工作/编译实战/（实战）4.arm64-centos7/index.html",
+    "public/images/avatar.gif",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
+    "public/attachments/hello-world/Pasted image 20250330233205.png",
+    "public/images/favicon-32x32-next.png",
+    "themes/hexo-theme-next/source/lib/pjax/CHANGELOG.md",
+    "themes/hexo-theme-next/source/lib/pjax/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/extglob/node_modules/extend-shallow/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/extglob/node_modules/define-property/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/expand-brackets/node_modules/is-descriptor/CHANGELOG.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/expand-brackets/node_modules/is-descriptor/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/expand-brackets/node_modules/extend-shallow/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/expand-brackets/node_modules/define-property/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/braces/node_modules/extend-shallow/README.md",
+    "node_modules/unset-value/node_modules/has-value/node_modules/isobject/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/micromatch/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/micromatch/CHANGELOG.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/kind-of/CHANGELOG.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/kind-of/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/extglob/changelog.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/extglob/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/expand-brackets/changelog.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/expand-brackets/README.md",
+    "node_modules/hexo-tag-aplayer/node_modules/readdirp/node_modules/braces/README.md"
   ]
 }
