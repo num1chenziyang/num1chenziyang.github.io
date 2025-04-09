@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/KB工具合集/通用工具/1.git项目管理工具/1.git命令合集.md",
+                "file": "source/_posts/KB_虚拟机/1.QEMU与VMware虚拟机.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "1.git命令合集"
+              "title": "1.QEMU与VMware虚拟机"
             }
           }
         ]
@@ -184,15 +184,22 @@
   },
   "active": "ef54ff309b3292d4",
   "lastOpenFiles": [
-    "source/_posts/KB_虚拟机/1.QEMU与VMware虚拟机.md",
     "source/template/KB命令合集.md",
-    "source/template/SI技术学习.md",
+    "source/_posts/KB工具合集/通用工具/1.git项目管理工具/2.git自定义命令.md",
+    "source/_posts/KB_虚拟机/1.QEMU与VMware虚拟机.md",
+    "source/_posts/KB工具合集/通用工具/1.git项目管理工具/1.git命令合集.md",
+    "source/_posts/笔记博客搭建/3.NEXT主题的美化.md",
+    "source/_posts/笔记博客搭建/4.NEXT搜索功能.md",
+    "source/_posts/笔记博客搭建/5.NEXT文章加密.md",
+    "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
+    "source/_posts/笔记博客搭建/2.OBSidian的一些用法.md",
+    "source/template/笔记博客搭建.md",
+    "source/_posts/KB工具合集/通用工具/1.git项目管理工具/4.git 实战记录.md",
     "source/template/SDLC流程记录.md",
     "source/template/SDLC机器支持.md",
     "source/template/SDLC编译工作-通用.md",
     "source/template/SDLC编译工作-编译实战.md",
-    "source/_posts/KB工具合集/通用工具/1.git项目管理工具/1.git命令合集.md",
-    "source/_posts/KB工具合集/通用工具/1.git项目管理工具/2.git自定义命令.md",
+    "source/template/SI技术学习.md",
     "source/_posts/SDLC编译工作/编译后自测/编译后自测.md",
     "source/_posts/SDLC编译工作/编译环境搭建/1.项目编译环境搭建.md",
     "source/_posts/SDLC编译工作/编译知识体系/3.make与cmake.md",
@@ -203,14 +210,7 @@
     "source/_posts/SDLC编译工作/编译实战/（实战）4.aarch64-centos7.md",
     "source/_posts/SDLC机器支持/5.国产架构说明.md",
     "source/_posts/SDLC机器支持/4.U盘启动盘制作.md",
-    "source/_posts/SDLC机器支持/3.LVM的核心概念​.md",
-    "source/_posts/SDLC机器支持/2.机器运维命令.md",
-    "source/_posts/SDLC机器支持/1.安装系统与网络配置.md",
-    "source/_posts/笔记博客搭建/2.OBSidian的一些用法.md",
-    "source/_posts/我的笔记.md",
-    "文件夹/我的笔记.md",
     "文件夹",
-    "source/_posts/SDLC编译工作/编译实战/（实战）6.mips64el-麒麟.md",
     "source/attachments/笔记博客搭建",
     "source/_posts/SDLC机器支持/4.mac 做盘指南",
     "source/_posts/SDLC机器支持/3.服务器操作",
