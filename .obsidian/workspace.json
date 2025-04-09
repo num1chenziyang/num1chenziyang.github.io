@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/SDLC机器支持/5.国产架构说明.md",
+                "file": "source/_posts/SI技术学习/刷题记录/（刷题）1.数组.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "5.国产架构说明"
+              "title": "（刷题）1.数组"
             }
           }
         ]
@@ -182,34 +182,34 @@
       "obsidian-importer:Open Importer": false
     }
   },
-  "active": "ef54ff309b3292d4",
+  "active": "fb6b15f3b6a8476d",
   "lastOpenFiles": [
-    "source/_posts/SDLC机器支持/（实战）机器修复.md",
-    "source/_posts/SDLC机器支持/1.安装系统与网络配置.md",
-    "source/_posts/SDLC机器支持/2.机器运维命令.md",
-    "source/_posts/SDLC机器支持/3.LVM的核心概念​.md",
+    "source/_posts/SI技术学习/刷题记录/2.算法刷题大纲.md",
+    "source/_posts/SI技术学习/刷题记录/1.编程语言介绍.md",
+    "source/_posts/SI技术学习/刷题记录/（刷题）4.字符串.md",
+    "source/_posts/SI技术学习/刷题记录/（刷题）5.双指针法.md",
+    "source/_posts/SI技术学习/刷题记录/（刷题）3.哈希表.md",
+    "source/_posts/SI技术学习/刷题记录/（刷题）2.链表.md",
+    "source/_posts/SI技术学习/刷题记录/（刷题）1.数组.md",
+    "source/_posts/SDLC流程记录/2.重做bltfprcc.c流程.md",
+    "source/_posts/SDLC流程记录/1.发版流程.md",
     "source/_posts/SDLC机器支持/5.国产架构说明.md",
+    "source/_posts/SDLC机器支持/3.LVM的核心概念​.md",
     "source/_posts/SDLC机器支持/4.U盘启动盘制作.md",
-    "source/_posts/KB_脚本/shell脚本.md",
-    "source/_posts/KB_脚本/python脚本.md",
-    "source/_posts/笔记博客搭建/5.NEXT文章加密.md",
-    "source/_posts/笔记博客搭建/6.NEXT网易云音乐.md",
-    "source/_posts/KB_虚拟机/1.QEMU与VMware虚拟机.md",
-    "source/_posts/KB命令合集/linux命令/正则表达式.md",
-    "source/_posts/SDLC编译工作/编译知识体系/6.java编译流程.md",
+    "source/_posts/SDLC机器支持/2.机器运维命令.md",
+    "source/_posts/SDLC机器支持/1.安装系统与网络配置.md",
+    "source/_posts/SDLC机器支持/（实战）机器修复.md",
     "source/_posts/SDLC编译工作/编译知识体系/7.linux编译相关工具.md",
+    "source/_posts/SDLC编译工作/编译知识体系/6.java编译流程.md",
     "source/_posts/SDLC编译工作/编译知识体系/5.交叉编译-嵌入式.md",
     "source/_posts/SDLC编译工作/编译知识体系/4.动态库与静态库.md",
     "source/_posts/SDLC编译工作/编译知识体系/3.make与cmake.md",
     "source/_posts/SDLC编译工作/编译知识体系/2.C++编译流程.md",
     "source/_posts/SDLC编译工作/编译知识体系/1.C编译流程.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）8.x86_64-New_Start_V6.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）7.aarch64-New_Start_V6.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）6.mips64el-麒麟.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）5.sw3231-Uos1050d.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）4.aarch64-centos7.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）3.power架构-AIX7.1.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）2.sw64-swos1.3.0.md",
+    "source/_posts/SDLC编译工作/编译环境搭建/1.项目编译环境搭建.md",
+    "source/_posts/SDLC编译工作/编译后自测/编译后自测.md",
+    "source/_posts/KB_虚拟机/1.QEMU与VMware虚拟机.md",
+    "source/_posts/KB_脚本/shell脚本.md",
     "文件夹",
     "source/attachments/笔记博客搭建",
     "source/_posts/SDLC机器支持/4.mac 做盘指南",
