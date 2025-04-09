@@ -2,9 +2,9 @@
 title: {{title}}
 date: {{date}} 
 categories: 
-- SDLC流程记录
+- SDLC机器支持
 - 
 tags: 
 - 
-password: 9761565829chen
+password: 
 ---

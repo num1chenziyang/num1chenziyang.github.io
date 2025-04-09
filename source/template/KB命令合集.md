@@ -2,9 +2,9 @@
 title: {{title}}
 date: {{date}} 
 categories: 
-- SI技术学习
+- KB命令合集
 - 
 tags: 
-- 学习
+- 
 password: 
 ---
