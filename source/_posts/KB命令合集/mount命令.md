@@ -267,5 +267,38 @@ lsblk
 mount /dev/sdb1 /mnt/usb
 ```
 
+
+### 三./tmp挂载
+```shell
+mount ｜ grep "/tmp"
+```
+可以看到 /tmp 的权限存在 noexec，这导致了在 /tmp 下临时存储的可执行文件（如 java）无权限执行。
+
+#### 1.临时重新挂载（适用于 tmpfs）
+```shell
+mount -o remount,exec,suid,dev,size=16G /tmp
+```
+- 将 /tmp 文件系统重新挂载（remount），并更改其挂载选项。
+	- remount 表示重新挂载已经挂载的文件系统，而不需要先卸载它。通过这种方式可以修改挂载选项。
+- 启用了以下特性：
+    - exec：允许执行文件。
+    - suid：允许 SUID 和 SGID 位生效。
+    - dev：允许使用设备文件。
+    - size=16G：将文件系统的大小限制为 16GB（适用于 tmpfs 类型的文件系统）。
+
+
+#### 2.永久修改挂载配置​​
+```bash
+# /etc/fstab 示例（tmpfs 类型）
+tmpfs /tmp tmpfs defaults,exec,suid,size=16G 0 0
+```
+
+修改后执行 
+```shell
+mount -a    #重新加载配置
+```
+ 
+
+
 ---
 

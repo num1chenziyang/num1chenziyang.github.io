@@ -1,6 +1,6 @@
 ---
-title: 正则表达式
-date: 2025-04-13 22:25:08 
+title: {{title}}
+date: {{date}} 
 categories: 
 - KB命令合集
 - 
