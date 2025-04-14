@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto+Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="ChenSir">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="ChenSir">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="czy">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ChenSir</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ChenSir</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一旦出发，必须到达</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">czy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://choubin.site/" title="http:&#x2F;&#x2F;choubin.site" rel="noopener" target="_blank">yearito</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusk-wind.github.io/" title="https:&#x2F;&#x2F;dusk-wind.github.io" rel="noopener" target="_blank">天凉の小站</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+      <div class="music-player-container">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13546769057&auto=1&height=430"></iframe>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+      
+
+      
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/gcc%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/gcc%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="一-GCC编译四个阶段"><a href="#一-GCC编译四个阶段" class="headerlink" title="一.GCC编译四个阶段"></a>一.GCC编译四个阶段</h1><p>GCC是一个广泛使用的开源编译器套件，主要用于编译C、C++、Go、Objective-C等语言的源代码。</p>
+<p>GCC的编译过程可以分为四个主要阶段：<br>预处理（Preprocessing）<br>编译（Compiling）<br>汇编（Assembling）<br>链接（Linking）</p>
+<h2 id="1-预处理（Preprocessing）"><a href="#1-预处理（Preprocessing）" class="headerlink" title="1. 预处理（Preprocessing）"></a>1. 预处理（Preprocessing）</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/gcc%E6%A6%82%E8%BF%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/6.samba%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E5%B7%A5%E5%85%B7/1.samba%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/6.samba%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E5%B7%A5%E5%85%B7/1.samba%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/grep%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/grep%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>grep命令总述</p>
+<p>grep命令配合正则表达式</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一.service 与 systemctl</p>
+<p>二.time</p>
+<p>三.wc</p>
+<p>四.whereis</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/14/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/11.apt%20%E5%B7%A5%E5%85%B7/1.apt%20%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/11.apt%20%E5%B7%A5%E5%85%B7/1.apt%20%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="一-APT-使用"><a href="#一-APT-使用" class="headerlink" title="一.APT 使用"></a>一.APT 使用</h1><p>apt（Advanced Package Tool）是 Debian 及其衍生发行版（如 Ubuntu、UOS 等）中用于管理软件包的高级命令行工具。它提供了一个比 apt-get 更加友好的用户界面，简化了许多常见的软件包管理任务，并提供了更详细的进度信息和错误消息。</p>
+<h2 id="1-主要功能"><a href="#1-主要功能" class="headerlink" title="1.主要功能"></a>1.主要功能</h2><ul>
+<li><strong>安装软件包</strong>：从指定的仓库下载并安装软件包。</li>
+<li><strong>更新软件包列表</strong>：刷新本地缓存，使系统知道最新的软件包版本。</li>
+<li><strong>升级软件包</strong>：将已安装的软件包升级到最新版本。</li>
+<li><strong>删除软件包</strong>：卸载不再需要的软件包。</li>
+<li><strong>搜索软件包</strong>：在仓库中查找特定的软件包。</li>
+<li><strong>显示软件包信息</strong>：查看软件包的详细信息。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/11.apt%20%E5%B7%A5%E5%85%B7/1.apt%20%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/1.%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/1.%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>![Kimi gdb O Kimi GDB GDB (GNU Debugger) R+ißiit C/C++ <em>iää GDB 1. GDB • EäjGDB: bash gdb _ exe _ • GDB. bash # GDB quit . EfiEJ</em>: bash run bash run 3ü2 # f/]ÉLI run 12 bob bash run bash kill filename bash # main IX]åfLkifMYfk break main # 7Æ2f# test. c 12 fiifMåfrk break test. c. 12 # 7Æ2f# test. c fi func break test. c: func rbreak regular—expression break foo if a &lt; 100 # ifMff#I$frk • bash info breakpoints • hhlJ%k: bash # info break delete 2 # 2 É9Yf,fä delete clear # bash disable 1 # 1 É91$fr,fä enable 1 bash continue bash step s tepi bash # si next # ni next i bash finish bash until lineNo 5. bash backtrace bash f rame 6. bash list 7. # bt bash print var print/ x var print *Ptr print *ptr@5 bash display var info display undisplay 1 delete display 1 bash what is var ptype var 8. bash x/16xb address # 16 address 16 # ‘JEV testArray x/ s testArray bash info registers bash print $eax 10. bash dump • bash info what is ptype bash break filename: num if condition bash watch var info watch # bash finish bash return expression return fif51J bash gcc —g —o hello hello. c GDB bash gdb . / hello bash (gdb) break main (gdb) run bash (gdb) backtrace bash (gdb) next (gdb) step bash (gdb) print var bash (gdb) x/16xb GDB: bash (gdb) quit 1 Kimi *-jiä ](source/attachments/Exported%20image%2020250401184314-0.png)</p>
+<h2 id="note："><a href="#note：" class="headerlink" title="note："></a>note：</h2><p>1.x /100c 变量名<br>可以按字符查看变量里的内容，更直观   2.在etc/sysadmin下touch stop，可以避免一些干扰（待详细确认）</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/2.gdbi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/2.gdbi/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="一-gdbi原理"><a href="#一-gdbi原理" class="headerlink" title="一.gdbi原理"></a>一.gdbi原理</h1><p>alias gdbi=’gdb attach <code>onstat -g glo | grep cpu | grep % | awk -F &#39;\&#39;&#39; &#39;\&#39;&#39; &#39;\&#39;&#39;&#123; print $2 &#125;&#39;\&#39;&#39;</code>‘</p>
+<h2 id="1-命令解析"><a href="#1-命令解析" class="headerlink" title="1.命令解析"></a>1.命令解析</h2><ol>
+<li>==alias gdbi=’…’====:==<ul>
+<li>==这是一个 shell 别名定义，将== ==gdbi== ==命令映射到后面的一系列命令。==</li>
+<li>==当你在终端中输入== ==gdbi== ==时，shell 会执行后面定义的命令。==</li>
+</ul>
+</li>
+<li>==gdb attach …====:==<ul>
+<li>==gdb== ==是 GNU 调试器。==</li>
+<li>==attach== ==命令用于将== ==gdb== ==附加到一个正在运行的进程。==</li>
+<li>==后面的部分是一个命令替换，用于确定要附加的进程 ID。==</li>
+</ul>
+</li>
+<li>==onstat -g glo | grep cpu | grep % | awk -F ‘ ‘ ‘{ print $2 }’====:==<ul>
+<li>==这是一个管道命令序列，用于获取 Informix 数据库的 CPU 使用情况，并提取出相应的进程 ID。==</li>
+<li>==onstat -g glo====:==<ul>
+<li>==onstat== ==是 Informix 数据库的一个管理工具，用于显示数据库的状态信息。==</li>
+<li>==-g glo== ==选项用于显示全局信息，包括所有在线的引擎和它们的 CPU 使用情况。==</li>
+</ul>
+</li>
+<li>==grep cpu====:==<ul>
+<li>==使用== ==grep== ==过滤出包含 “cpu” 的行，这些行通常包含了 CPU 使用情况的信息。==</li>
+</ul>
+</li>
+<li>==grep %====:==<ul>
+<li>==再次使用== ==grep== ==过滤出包含== ==%== ==的行，进一步缩小范围，确保只保留与 CPU 使用相关的行。==</li>
+</ul>
+</li>
+<li>==awk -F ‘ ‘ ‘{ print $2 }’====:==<ul>
+<li>==awk== ==是一个强大的文本处理工具。==</li>
+<li>==-F ‘ ‘== ==指定空格作为字段分隔符。==</li>
+<li>=={ print $2 }== ==表示打印第二列，即进程 ID。==</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/2.gdbi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/3.%E8%B0%83%E8%AF%95oninit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/3.%E8%B0%83%E8%AF%95oninit/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="一-gdb-调试"><a href="#一-gdb-调试" class="headerlink" title="一.gdb 调试"></a>一.gdb 调试</h1><p>gdb oninit<br>set args -vy<br>b main<br>run</p>
+<h1 id="二-打印调试"><a href="#二-打印调试" class="headerlink" title="二.打印调试"></a>二.打印调试</h1><p>在 main 中添加 printf，运行 oninit 时会显示打印信息</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/3.%E8%B0%83%E8%AF%95oninit/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/4.openssl%E8%B0%83%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/4.openssl%E8%B0%83%E8%AF%95/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>onstat -g glo<br>发现加密VP是encrypt，调试其pid:16166<br>gdb attach 16166<br>b openssl_init_ctx<br>c</p>
+<p>465</p>
+
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/1.yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/1.yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="一-我有-iso-文件，如何将其中的包资源配置成-yum-源？"><a href="#一-我有-iso-文件，如何将其中的包资源配置成-yum-源？" class="headerlink" title="一.我有 iso 文件，如何将其中的包资源配置成 yum 源？"></a>一.我有 iso 文件，如何将其中的包资源配置成 yum 源？</h1><h2 id="1-挂载-ISO-文件"><a href="#1-挂载-ISO-文件" class="headerlink" title="1. 挂载 ISO 文件"></a>1. 挂载 ISO 文件</h2><p>首先，你需要将 ISO 文件挂载到一个目录中。假设你的 ISO 文件位于 /path/to/your.iso，你可以使用以下命令将其挂载到 /mnt/iso 目录：<br>==sudo mkdir -p /mnt/iso====￼====sudo mount -o loop /path/to/your.iso /mnt/iso==</p>
+<h2 id="2-创建-YUM-源配置文件"><a href="#2-创建-YUM-源配置文件" class="headerlink" title="2. 创建 YUM 源配置文件"></a>2. 创建 YUM 源配置文件</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/1.yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">czy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

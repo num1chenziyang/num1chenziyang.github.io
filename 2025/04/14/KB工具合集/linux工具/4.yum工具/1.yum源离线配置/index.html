@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto+Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="一.我有 iso 文件，如何将其中的包资源配置成 yum 源？1. 挂载 ISO 文件首先，你需要将 ISO 文件挂载到一个目录中。假设你的 ISO 文件位于 &#x2F;path&#x2F;to&#x2F;your.iso，你可以使用以下命令将其挂载到 &#x2F;mnt&#x2F;iso 目录：&#x3D;&#x3D;sudo mkdir -p &#x2F;mnt&#x2F;iso&#x3D;&#x3D;&#x3D;&#x3D;￼&#x3D;&#x3D;&#x3D;&#x3D;sudo mount -o loop &#x2F;path&#x2F;to&#x2F;your.iso &#x2F;mnt&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ChenSir">
+<meta property="og:url" content="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/1.yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="ChenSir">
+<meta property="og:description" content="一.我有 iso 文件，如何将其中的包资源配置成 yum 源？1. 挂载 ISO 文件首先，你需要将 ISO 文件挂载到一个目录中。假设你的 ISO 文件位于 &#x2F;path&#x2F;to&#x2F;your.iso，你可以使用以下命令将其挂载到 &#x2F;mnt&#x2F;iso 目录：&#x3D;&#x3D;sudo mkdir -p &#x2F;mnt&#x2F;iso&#x3D;&#x3D;&#x3D;&#x3D;￼&#x3D;&#x3D;&#x3D;&#x3D;sudo mount -o loop &#x2F;path&#x2F;to&#x2F;your.iso &#x2F;mnt&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:modified_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:author" content="czy">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/1.yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AE/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | ChenSir</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ChenSir</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一旦出发，必须到达</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E6%88%91%E6%9C%89-iso-%E6%96%87%E4%BB%B6%EF%BC%8C%E5%A6%82%E4%BD%95%E5%B0%86%E5%85%B6%E4%B8%AD%E7%9A%84%E5%8C%85%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E6%88%90-yum-%E6%BA%90%EF%BC%9F"><span class="nav-text">一.我有 iso 文件，如何将其中的包资源配置成 yum 源？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%8C%82%E8%BD%BD-ISO-%E6%96%87%E4%BB%B6"><span class="nav-text">1. 挂载 ISO 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA-YUM-%E6%BA%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">2. 创建 YUM 源配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B8%85%E9%99%A4-YUM-%E7%BC%93%E5%AD%98"><span class="nav-text">3. 清除 YUM 缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9B%B4%E6%96%B0-YUM-%E7%BC%93%E5%AD%98"><span class="nav-text">4. 更新 YUM 缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E9%AA%8C%E8%AF%81-YUM-%E6%BA%90"><span class="nav-text">5. 验证 YUM 源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E4%BD%BF%E7%94%A8-YUM-%E6%BA%90%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-text">6. 使用 YUM 源安装软件包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%8D%B8%E8%BD%BD-ISO-%E6%96%87%E4%BB%B6%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-text">7. 卸载 ISO 文件（可选）</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">czy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://choubin.site/" title="http:&#x2F;&#x2F;choubin.site" rel="noopener" target="_blank">yearito</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusk-wind.github.io/" title="https:&#x2F;&#x2F;dusk-wind.github.io" rel="noopener" target="_blank">天凉の小站</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+      <div class="music-player-container">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13546769057&auto=1&height=430"></iframe>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/1.yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="一-我有-iso-文件，如何将其中的包资源配置成-yum-源？"><a href="#一-我有-iso-文件，如何将其中的包资源配置成-yum-源？" class="headerlink" title="一.我有 iso 文件，如何将其中的包资源配置成 yum 源？"></a>一.我有 iso 文件，如何将其中的包资源配置成 yum 源？</h1><h2 id="1-挂载-ISO-文件"><a href="#1-挂载-ISO-文件" class="headerlink" title="1. 挂载 ISO 文件"></a>1. 挂载 ISO 文件</h2><p>首先，你需要将 ISO 文件挂载到一个目录中。假设你的 ISO 文件位于 /path/to/your.iso，你可以使用以下命令将其挂载到 /mnt/iso 目录：<br>==sudo mkdir -p /mnt/iso====￼====sudo mount -o loop /path/to/your.iso /mnt/iso==</p>
+<h2 id="2-创建-YUM-源配置文件"><a href="#2-创建-YUM-源配置文件" class="headerlink" title="2. 创建 YUM 源配置文件"></a>2. 创建 YUM 源配置文件</h2><p>接下来，你需要创建一个 YUM 源配置文件。YUM 源配置文件通常位于 /etc/yum.repos.d/ 目录下。你可以创建一个新的配置文件，例如 local.repo：<br>==sudo vi /etc/yum.repos.d/local.repo==<br>在 local.repo 文件中添加以下内容：<br>==[local]====￼====name=Local ISO Repository====￼====baseurl=file:====///mnt/iso====￼====enabled=====1====￼====gpgcheck=====0==<br>解释：</p>
+<ul>
+<li>[local]：这是仓库的唯一标识符。</li>
+<li>name：仓库的描述性名称。</li>
+<li>baseurl：指向挂载的 ISO 文件目录。</li>
+<li>enabled：设置为 1 表示启用此仓库。</li>
+<li>gpgcheck：设置为 0 表示不检查 GPG 签名。如果你有 GPG 密钥，可以设置为 1 并提供 gpgkey 路径。</li>
+</ul>
+<h2 id="3-清除-YUM-缓存"><a href="#3-清除-YUM-缓存" class="headerlink" title="3. 清除 YUM 缓存"></a>3. 清除 YUM 缓存</h2><p>为了确保 YUM 使用新的源配置，清除现有的缓存：<br>==sudo yum clean all==</p>
+<h2 id="4-更新-YUM-缓存"><a href="#4-更新-YUM-缓存" class="headerlink" title="4. 更新 YUM 缓存"></a>4. 更新 YUM 缓存</h2><p>更新 YUM 缓存以包含新添加的源：<br>==sudo yum makecache==</p>
+<h2 id="5-验证-YUM-源"><a href="#5-验证-YUM-源" class="headerlink" title="5. 验证 YUM 源"></a>5. 验证 YUM 源</h2><p>你可以通过列出可用的包来验证 YUM 源是否配置成功：<br>==sudo yum list available==</p>
+<h2 id="6-使用-YUM-源安装软件包"><a href="#6-使用-YUM-源安装软件包" class="headerlink" title="6. 使用 YUM 源安装软件包"></a>6. 使用 YUM 源安装软件包</h2><p>现在你可以使用 YUM 命令从本地 ISO 文件中安装软件包。例如，安装 vim：<br>==sudo yum install vim==</p>
+<h2 id="7-卸载-ISO-文件（可选）"><a href="#7-卸载-ISO-文件（可选）" class="headerlink" title="7. 卸载 ISO 文件（可选）"></a>7. 卸载 ISO 文件（可选）</h2><p>当你不再需要挂载 ISO 文件时，可以卸载它：<br>==sudo umount /mnt/iso==</p>
+
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>czy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/1.yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AE/" title="">http://example.com/2025/04/14/KB工具合集/linux工具/4.yum工具/1.yum源离线配置/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/2.yum%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/4.openssl%E8%B0%83%E8%AF%95/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">czy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto+Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="一.-fcommonGCC 的 -fcommon 选项与处理全局变量的存储方式有关，特别是当同一个全局变量在多个文件中重复声明时。 1.背景：在 C 语言中，如果在多个文件中使用了相同的全局变量名而没有使用 extern 关键字声明，这会导致“多重定义”问题。C 标准规定这样的变量要么应该有一个定义并使用 extern 来引用它，要么应该只定义一次。在老版本的 GCC 中，-fcommon 是默认">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ChenSir">
+<meta property="og:url" content="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/2.%E5%91%BD%E4%BB%A4%EF%BC%9A-fcommon/index.html">
+<meta property="og:site_name" content="ChenSir">
+<meta property="og:description" content="一.-fcommonGCC 的 -fcommon 选项与处理全局变量的存储方式有关，特别是当同一个全局变量在多个文件中重复声明时。 1.背景：在 C 语言中，如果在多个文件中使用了相同的全局变量名而没有使用 extern 关键字声明，这会导致“多重定义”问题。C 标准规定这样的变量要么应该有一个定义并使用 extern 来引用它，要么应该只定义一次。在老版本的 GCC 中，-fcommon 是默认">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:modified_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:author" content="czy">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/2.%E5%91%BD%E4%BB%A4%EF%BC%9A-fcommon/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | ChenSir</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ChenSir</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一旦出发，必须到达</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-fcommon"><span class="nav-text">一.-fcommon</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%83%8C%E6%99%AF%EF%BC%9A"><span class="nav-text">1.背景：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-text">2.示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-fcommon-a-c-b-c-o-program"><span class="nav-text">gcc -fcommon a.c b.c -o program</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-fno-common%EF%BC%9A"><span class="nav-text">二.-fno-common：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-text">1.示例：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-text">三.总结：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%93"><span class="nav-text">———————————————————————————————–</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-fcommon-%E5%92%8C-Wl-allow-multiple-definition"><span class="nav-text">一.-fcommon 和 -Wl,-allow-multiple-definition</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">czy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://choubin.site/" title="http:&#x2F;&#x2F;choubin.site" rel="noopener" target="_blank">yearito</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusk-wind.github.io/" title="https:&#x2F;&#x2F;dusk-wind.github.io" rel="noopener" target="_blank">天凉の小站</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+      <div class="music-player-container">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13546769057&auto=1&height=430"></iframe>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/2.%E5%91%BD%E4%BB%A4%EF%BC%9A-fcommon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="一-fcommon"><a href="#一-fcommon" class="headerlink" title="一.-fcommon"></a>一.-fcommon</h1><p>GCC 的 -fcommon 选项与处理全局变量的存储方式有关，特别是当同一个全局变量在多个文件中重复声明时。</p>
+<h2 id="1-背景："><a href="#1-背景：" class="headerlink" title="1.背景："></a>1.背景：</h2><p>在 C 语言中，如果在多个文件中使用了相同的全局变量名而没有使用 extern 关键字声明，这会导致“多重定义”问题。C 标准规定这样的变量要么应该有一个定义并使用 extern 来引用它，要么应该只定义一次。<br>在老版本的 GCC 中，-fcommon 是默认启用的，这允许全局变量在多个源文件中重复声明，而不会引发链接错误。使用 -fcommon 时，这些变量会被放置在一个“公共”块中，在链接阶段将这些变量合并为一个实例。</p>
+<h2 id="2-示例："><a href="#2-示例：" class="headerlink" title="2.示例："></a>2.示例：</h2><p>假设有两个文件都定义了同样的全局变量：<br><strong>a.c:</strong><br>int global_var;<br><strong>b.c:</strong><br>int global_var;</p>
+<p>如果使用 -fcommon 编译这两个文件，链接器会将这两个定义合并，不会报错：</p>
+<h2 id="gcc-fcommon-a-c-b-c-o-program"><a href="#gcc-fcommon-a-c-b-c-o-program" class="headerlink" title="gcc -fcommon a.c b.c -o program"></a>gcc -fcommon a.c b.c -o program</h2><p>程序会成功编译并链接，因为 -fcommon 命令允许多个定义。</p>
+<h1 id="二-fno-common："><a href="#二-fno-common：" class="headerlink" title="二.-fno-common："></a>二.-fno-common：</h1><p>从 <strong>GCC 10</strong> 开始，-fno-common 成为默认选项。这意味着 GCC 不再允许多个文件中出现相同的全局变量定义。改用 -fno-common 时，编译器会在链接时报告“多重定义”错误。</p>
+<h2 id="1-示例："><a href="#1-示例：" class="headerlink" title="1.示例："></a>1.示例：</h2><p>gcc a.c b.c -o program<br>在 GCC 10 或更高版本中，链接阶段会报错：<br>/usr/bin/ld: b.o:(.bss+0x0): multiple definition of `global_var’; a.o:(.bss+0x0): first defined here</p>
+<p>此时解决办法可以是：<br>将其中一个文件的全局变量声明为 extern，如在 b.c 中：<br><strong>b.c:</strong><br>extern int global_var;</p>
+<h1 id="三-总结："><a href="#三-总结：" class="headerlink" title="三.总结："></a>三.总结：</h1><ul>
+<li><strong>-fcommon</strong>：允许多个文件中重复定义全局变量（适用于老版本 GCC）。</li>
+<li><strong>-fno-common</strong>（默认行为在 GCC 10 及以上）：强制全局变量只允许有一个定义，否则会在链接时报错。</li>
+</ul>
+<p>如果你在迁移到新版本的 GCC 时遇到“多重定义”错误，可以暂时使用 -fcommon 选项作为兼容解决方案，但最好通过正确的 extern 声明来修复代码。</p>
+<h1 id="———————————————————————————————–"><a href="#———————————————————————————————–" class="headerlink" title="———————————————————————————————–"></a>———————————————————————————————–</h1><h1 id="一-fcommon-和-Wl-allow-multiple-definition"><a href="#一-fcommon-和-Wl-allow-multiple-definition" class="headerlink" title="一.-fcommon 和 -Wl,-allow-multiple-definition"></a>一.-fcommon 和 -Wl,-allow-multiple-definition</h1><p>在 GCC 10 中，-fcommon 和 -Wl,-allow-multiple-definition 都与处理全局变量的重复定义问题有关，但它们的作用范围和影响有所不同。<br><strong>-fcommon</strong></p>
+<ul>
+<li><strong>作用</strong>: 控制全局变量的存储方式。</li>
+<li><strong>默认行为</strong>: 在 GCC 10 之前，默认是 -fcommon，这意味着全局变量可以在多个文件中重复定义，链接器会将它们合并为一个“common”符号。这种行为可以避免重复定义导致的链接错误。</li>
+<li><strong>在</strong> <strong>GCC 10</strong> <strong>中的变化</strong>: 从 GCC 10 开始，默认行为变为 -fno-common。即，重复定义的全局变量不再被视为“common”符号，而是普通的定义符号。这意味着，如果在多个文件中定义了同名全局变量，链接器会报“multiple definition”错误。</li>
+</ul>
+<p><strong>-Wl,-allow-multiple-definition</strong></p>
+<ul>
+<li><strong>作用</strong>: 直接影响链接器（ld）的行为，允许重复定义符号。</li>
+<li><strong>使用场景</strong>: 当你在多个目标文件（.o 文件）中定义了相同的全局变量或函数，并希望链接器忽略这些重复定义并继续生成可执行文件时，可以使用这个选项。</li>
+<li><strong>效果</strong>: 这个选项通过 -Wl, 传递给链接器，并告诉它允许多个目标文件中存在相同符号的定义，而不会产生链接错误。它对所有符号都有效，包括全局变量、函数等。</li>
+</ul>
+<p><strong>区别</strong></p>
+<ol>
+<li><strong>处理范围</strong>:<ul>
+<li>-fcommon 仅影响全局变量的处理方式，决定这些变量在编译时是被视为“common”符号还是普通的定义符号。</li>
+<li>-Wl,-allow-multiple-definition 影响链接器的行为，对所有符号（不仅仅是全局变量）生效，允许重复定义。</li>
+</ul>
+</li>
+<li><strong>默认行为</strong>:<ul>
+<li>在 GCC 10 中，默认是 -fno-common，即不允许重复定义全局变量。</li>
+<li>-Wl,-allow-multiple-definition 并不是默认行为，必须显式使用该选项。</li>
+</ul>
+</li>
+<li><strong>使用效果</strong>:<ul>
+<li>-fcommon 是编译时的选项，影响代码的编译过程。如果使用 -fcommon，即便重复定义全局变量，链接时也不会出错。</li>
+<li>-Wl,-allow-multiple-definition 是链接时的选项，可以在编译后通过该选项强制链接器忽略重复定义的错误。</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结</strong></p>
+<ul>
+<li><strong>-fcommon</strong> 影响的是全局变量的编译和链接方式，主要针对重复定义的全局变量。</li>
+<li><strong>-Wl,-allow-multiple-definition</strong> 是一个更广泛的选项，影响链接器的行为，允许多个重复定义的符号（不仅限于全局变量）。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>czy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/2.%E5%91%BD%E4%BB%A4%EF%BC%9A-fcommon/" title="">http://example.com/2025/04/14/KB工具合集/linux工具/9.gcc工具/2.命令：-fcommon/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/3.%E5%91%BD%E4%BB%A4%EF%BC%9A-L%20-l/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/9.gcc%E5%B7%A5%E5%85%B7/1.%E5%91%BD%E4%BB%A4%EF%BC%9A-E%20-dD/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">czy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

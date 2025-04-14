@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto+Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="一**.常用vim**操作:w        :q        :wq        :q! :set nu    (:set number)显示行号 :set nonu    (:set nonumber)取消显示行号 :w [文件名]将编辑后的内容保存到另一个文件中（另存为，如果文件不存在则创建文件并存入）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ChenSir">
+<meta property="og:url" content="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/5.vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/1.vim%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="ChenSir">
+<meta property="og:description" content="一**.常用vim**操作:w        :q        :wq        :q! :set nu    (:set number)显示行号 :set nonu    (:set nonumber)取消显示行号 :w [文件名]将编辑后的内容保存到另一个文件中（另存为，如果文件不存在则创建文件并存入）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:modified_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:author" content="czy">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/5.vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/1.vim%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | ChenSir</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ChenSir</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一旦出发，必须到达</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">czy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://choubin.site/" title="http:&#x2F;&#x2F;choubin.site" rel="noopener" target="_blank">yearito</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusk-wind.github.io/" title="https:&#x2F;&#x2F;dusk-wind.github.io" rel="noopener" target="_blank">天凉の小站</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+      <div class="music-player-container">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13546769057&auto=1&height=430"></iframe>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/5.vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/1.vim%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong>一</strong>**.<strong><strong>常用</strong></strong>vim**<strong>操作</strong><br><strong>:w</strong>        <strong>:q</strong>        <strong>:wq</strong>        <strong>:q!</strong></p>
+<p><strong>:set nu</strong>    <strong>(:set number)</strong><br>显示行号</p>
+<p><strong>:set nonu</strong>    <strong>(:set nonumber)</strong><br>取消显示行号</p>
+<p><strong>:w</strong> <strong>[<strong><strong>文件名</strong></strong>]</strong><br>将编辑后的内容保存到另一个文件中（另存为，如果<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%96%87%E4%BB%B6%E4%B8%8D%E5%AD%98%E5%9C%A8&spm=1001.2101.3001.7020">文件不存在</a>则创建文件并存入）</p>
+<p><strong>:2,5w</strong> <strong>[<strong><strong>文件名</strong></strong>]</strong><br>将第2到5行的内容保存到另一个文件中（指定行另存为）</p>
+<p><strong>:r</strong> <strong>[<strong><strong>文件名</strong></strong>]</strong><br>输入另一个文件的内容，到光标的下一行</p>
+<p><strong>:1,$d</strong><br>从第一行到最后一行，全部删除</p>
+<p><strong>:1,$y</strong><br>从第一行到最后一行，全部复制（yanked）</p>
+<p><strong>:%s/old_string/new_string/g</strong><br>将某个字符串全部替换为另一个字符串<br>Note：<br>    1.old_string 是您要替换的原始字符串。<br>    2.new_string 是您要替换为的新字符串。<br>    3.g 是一个标志位，表示“全局”（global），意味着替换每行中所有匹配的旧字符串。如果不包含 g，则只替换每行的第一个匹配字符串。</p>
+<p><strong>:727,857s/SQL/API/g</strong><br>将727到857之间的SQL替换为API</p>
+<p>**:1,10s/<em><strong><em>\v(.</em>)</strong></em><em>/<strong><strong>\U\1</strong></strong>/g</em>*<br>==1.==        ==1,10====：表示行范围，指定了我们要替换的行的范围为====1====到====10====行。==<br>==2.==        ==s====：表示进行替换操作。==<br>==3.==        ==\v====：启用====“====魔术模式====”====或者====“====非规范模式====”====，这意味着我们可以使用更简洁和直观的正则==<br>           ==表达式语法来匹配文本。==<br>==4.==        ==(.<em>)====：这是正则表达式的一部分，表示匹配任意字符（除了换行符）零次或多次，并==<br>       ==将其捕获到分组====1====中。==<br>==5.==        ==\U====：将接下来的字符全部转换为大写。==<br>==6.==        ==\1====：引用第一个捕获的分组，即====(.</em>)====中匹配到的内容。==<br>==7.==        ==g====：表示全局替换，在每一行中找到所有匹配项并进行替换。==<br>这个命令会在1到10行的每一行中找到任意字符，然后将其全部转换为大写。</p>
+<p><strong>:let i=130 | 858,888g/$/s/$/=i/ | let i=i+1</strong><br>==1.==        ==let== ==i=130====：这个命令使用====let====关键字来定义一个变量====i====并将其初始化为====130====，==<br>           ==这个变量用于存储自增的数字。==</p>
+<p>==2.==        ==|====：== ==这个竖线符号用于分隔多个命令，使它们可以在同一行上执行。==</p>
+<p>==3.==        ==858,888g/$/s/$/=i/====，这是一个替换命令，它的格式为：==<br>                ==[range]g/pattern/s/pattern/replacement/==<br>           ==其中：==<br>                ==858,888g====：这个范围命令指定了从====858====到====888====行。==<br>                ==/$/====：这个模式匹配每一行的行尾（====$====表示行尾）。==<br>                ==s/$/=i/====：这个替换命令将行尾的行尾符号替换为变量====i====的值，=========表示后面的内容==<br>           ==作为====VimL====表达式求值。====i====将被插入到行末。==</p>
+<p>==4.==        ==let== ==i=i+1====：这个命令将变量====i====的值加====1====，以便下一个行尾插入操作时使用。==<br>这个命令将会在从第858行到第888行的每一行的行尾插入从130开始的自增数字。每次执行命令时，自增数字将会递增。 </p>
+<p> <strong>:let i=130 | 858,888g/$/s/$/=‘</strong>    <strong>‘.i/ | let i=i+1</strong><br>在 Vim 中，点 <strong>.</strong> 是用来进行<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5&spm=1001.2101.3001.7020">字符串拼接</a>的操作符，它将左右两个字符串连接在一起，形成一个新的字符串。此命令即在数字i之前加入四个空格。</p>
+<p><strong>yy</strong><br>复制一行</p>
+<p><strong>y+Shift+g<strong><strong>（即</strong></strong>G****）</strong><br>从光标当前行，复制到最后一行（在第一行的话，等价于:1,$y）</p>
+<p><strong>gg</strong><br>到头部</p>
+<p><strong>Shift+g<strong><strong>（即</strong></strong>G****）</strong><br>到尾部</p>
+<p><strong>dd</strong><br>删除光标行（准确来说是剪切，用p可粘贴出这行）</p>
+<p><strong>a</strong><br>当前光标后面插入</p>
+<p><strong>i</strong><br>当前光标位置插入</p>
+<p><strong>Shift+5**<strong>（即</strong></strong>%**<strong>）</strong><br>到另一个匹配的括号处</p>
+<p><strong>Shift+1</strong><br>光标到行尾</p>
+<p><strong>0</strong><br>光标到行首</p>
+<p>**num+**<strong>方向键</strong><br>光标向方向移动num格<br>Note：<br>vim中的「数字键」代表重复次数，可以配合其他指令简化操作，比如：<br>10↓或10j可一次向下移动10行。<br>2p可以一次粘贴2行<br>2dd可以一次剪切2行</p>
+<p><strong>x</strong><br>删除后一个字符</p>
+<p><strong>Shift+x<strong><strong>（即</strong></strong>X****）</strong><br>删除前一个字符</p>
+<p><strong>u</strong><br>撤回</p>
+<p><strong>Ctrl+r</strong><br>取消撤回</p>
+<p>**.**<strong>（小数点）</strong><br>重复刚才的操作</p>
+<p><strong>p</strong><br>粘贴到下一行</p>
+<p><strong>Shift+p<strong><strong>（即</strong></strong>P****）</strong><br>粘贴到上一行</p>
+<p><strong>/word</strong>        <strong>Shift+8<strong><strong>（即</strong></strong></strong><em><strong>）</strong>        <strong>Shift+3</strong></em><em>（即</em>***#*<em><strong>）</strong><br>搜索word，</em>是去搜到的下一个，#是去搜到的下一个；n是下一个，Shift+n是上一个。</p>
+<p><strong>二</strong><strong>.Ctrl+v****可视块模式</strong><br>        在Vim中，Ctrl+v是一个常用的快捷键组合，用于进入可视块模式，可视块模式可以用于选择和编辑文本块（直接v则选中行，有的命令直接v的时候不可用）。<br>以下是在Vim中使用Ctrl+v的一些常见用法：<br>==1.====选择矩形块：按下====Ctrl+v====，然后使用方向键移动光标，可选择一个矩形文本块。==</p>
+<p>==2.====插入矩形文本：==<strong>Shift+i</strong> ==进入插入模式。==</p>
+<p>==3.====对齐文本：==<strong>Shift+:</strong>  ==进入命令行模式，在命令行上输入对齐命令（例如==<strong>left<strong><strong>、</strong></strong>right<strong><strong>、</strong></strong>center</strong>==等）并按下回车键，可以对所选的文本进行对齐操作。==</p>
+<p>==4.====块注释：==<strong>Shift+i</strong> ==进入插入模式，输入注释符（例如==<strong>#<strong><strong>或</strong></strong>//</strong>==等），按下====Esc====键，可以在所选的每一行前添加注释符，实现块注释。==</p>
+<p>==5.====复制或剪切矩形块：==<strong>c</strong> ==修改所选内容，==<strong>y</strong> ==复制所选内容，==<strong>d</strong> ==剪切所选内容，==<strong>p</strong> ==将所选内容粘贴到光标所在位置。==</p>
+<p><strong>三</strong><strong>.<strong><strong>分割窗口</strong><br><strong>:sp</strong></strong>（****:split****）</strong><br>在vim中，:sp命令用于水平分割当前窗口并打开一个新的空白文件，在分割窗口之后，你可以在新窗口中编辑文件。这样做的好处就是在编辑的时候，可以在新建窗口中参考其他文件内容或本文件别的内容。<br><strong>:vsp</strong><br>垂直分割窗口<br>:vsp GetBindInfotest.c        即在分割出的窗口打开此文件<br>==一些在分割窗口中操作的常用命令和快捷键包括：==<br>==1.Ctrl== ==+ w== ==+ w==                  ==切换焦点到下一个窗口==<br>==2.Ctrl== ==+ w== ==+== ==方向键==          ==在窗口之间切换==<br>==3.Ctrl== ==+ w== ==+== =====                   ==使所有窗口大小相等==<br>==4.Ctrl== ==+ w== ==+== ==_==                   ==最大化当前窗口的高度==<br>==5.Ctrl== ==+ w== ==+== ==|==                    ==最大化当前窗口的宽度==<br>==6.Ctrl== ==+ w== ==+ v==                   ==垂直分割窗口并打开文件==<br>==7.Ctrl== ==+ w== ==+ s==<br>==8.Ctrl== ==+ w== ==+ r==                    ==交换窗口位置==<br>==要在新窗口中打开文件，可以使用命令== ==:e== ==&lt;====文件路径====&gt;== ==或者== ==:sp== ==&lt;====文件路径====&gt;====。==<br>==当你完成在分割窗口中的操作后，可以使用快捷键== ==Ctrl== ==+ w== ==+== ==c====关闭当前窗口；====Ctrl== ==+ w== ==+ q====也可以关闭窗口，当只有一个窗口后，将会退出====vim====。==</p>
+<p>Note：<br>1.参考文章<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangyuxiang946/article/details/126560108">vim</a>使用教程图文教程（全面，手册）<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qing_gee/article/details/114263298?spm=1001.2101.3001.6650.8&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-114263298-blog-126560108.235%5Ev38%5Epc_relevant_anti_vip_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-8-114263298-blog-126560108.235%5Ev38%5Epc_relevant_anti_vip_base&utm_relevant_index=14">vim</a>人类史上最好用的文本编辑器！（操作）<br><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/5426.html">简明</a> Vim 练级攻略 | 酷 壳 - CoolShell</p>
+
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>czy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/5.vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/1.vim%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" title="">http://example.com/2025/04/14/KB工具合集/linux工具/5.vim文本编辑器/1.vim工具使用/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/5.vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/2.vim-%E6%AD%A3%E5%88%99-%E5%AE%9E%E6%88%98/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/4.yum%E5%B7%A5%E5%85%B7/2.yum%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">czy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

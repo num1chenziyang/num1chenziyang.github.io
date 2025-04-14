@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto+Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="一.APT 使用apt（Advanced Package Tool）是 Debian 及其衍生发行版（如 Ubuntu、UOS 等）中用于管理软件包的高级命令行工具。它提供了一个比 apt-get 更加友好的用户界面，简化了许多常见的软件包管理任务，并提供了更详细的进度信息和错误消息。 1.主要功能 安装软件包：从指定的仓库下载并安装软件包。 更新软件包列表：刷新本地缓存，使系统知道最新的软件包版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ChenSir">
+<meta property="og:url" content="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/11.apt%20%E5%B7%A5%E5%85%B7/1.apt%20%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="ChenSir">
+<meta property="og:description" content="一.APT 使用apt（Advanced Package Tool）是 Debian 及其衍生发行版（如 Ubuntu、UOS 等）中用于管理软件包的高级命令行工具。它提供了一个比 apt-get 更加友好的用户界面，简化了许多常见的软件包管理任务，并提供了更详细的进度信息和错误消息。 1.主要功能 安装软件包：从指定的仓库下载并安装软件包。 更新软件包列表：刷新本地缓存，使系统知道最新的软件包版">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:modified_time" content="2025-04-14T15:10:54.631Z">
+<meta property="article:author" content="czy">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/11.apt%20%E5%B7%A5%E5%85%B7/1.apt%20%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | ChenSir</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ChenSir</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一旦出发，必须到达</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-APT-%E4%BD%BF%E7%94%A8"><span class="nav-text">一.APT 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-text">1.主要功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">2.常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-text">一、基础操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="nav-text">二、软件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%9F%A5%E8%AF%A2%E4%B8%8E%E4%BF%A1%E6%81%AF"><span class="nav-text">三、查询与信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96"><span class="nav-text">四、配置优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="nav-text">五、高级技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">czy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://choubin.site/" title="http:&#x2F;&#x2F;choubin.site" rel="noopener" target="_blank">yearito</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusk-wind.github.io/" title="https:&#x2F;&#x2F;dusk-wind.github.io" rel="noopener" target="_blank">天凉の小站</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+      <div class="music-player-container">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13546769057&auto=1&height=430"></iframe>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/11.apt%20%E5%B7%A5%E5%85%B7/1.apt%20%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-14 23:10:54" itemprop="dateCreated datePublished" datetime="2025-04-14T23:10:54+08:00">2025-04-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="一-APT-使用"><a href="#一-APT-使用" class="headerlink" title="一.APT 使用"></a>一.APT 使用</h1><p>apt（Advanced Package Tool）是 Debian 及其衍生发行版（如 Ubuntu、UOS 等）中用于管理软件包的高级命令行工具。它提供了一个比 apt-get 更加友好的用户界面，简化了许多常见的软件包管理任务，并提供了更详细的进度信息和错误消息。</p>
+<h2 id="1-主要功能"><a href="#1-主要功能" class="headerlink" title="1.主要功能"></a>1.主要功能</h2><ul>
+<li><strong>安装软件包</strong>：从指定的仓库下载并安装软件包。</li>
+<li><strong>更新软件包列表</strong>：刷新本地缓存，使系统知道最新的软件包版本。</li>
+<li><strong>升级软件包</strong>：将已安装的软件包升级到最新版本。</li>
+<li><strong>删除软件包</strong>：卸载不再需要的软件包。</li>
+<li><strong>搜索软件包</strong>：在仓库中查找特定的软件包。</li>
+<li><strong>显示软件包信息</strong>：查看软件包的详细信息。</li>
+</ul>
+<h2 id="2-常用命令"><a href="#2-常用命令" class="headerlink" title="2.常用命令"></a>2.常用命令</h2><h3 id="一、基础操作"><a href="#一、基础操作" class="headerlink" title="一、基础操作"></a>一、基础操作</h3><ol>
+<li><strong>更新软件源索引****￼</strong>sudo apt update￼（同步远程仓库的软件列表到本地，建议每次操作前执行）</li>
+<li><strong>升级所有可更新软件****￼</strong>sudo apt upgrade￼（仅升级已安装的包，保留旧配置）￼sudo apt full-upgrade￼（彻底升级，可能删除旧依赖）</li>
+<li><strong>一键更新组合命令****￼</strong>sudo apt update &amp;&amp; sudo apt upgrade -y￼（-y 自动确认操作）</li>
+</ol>
+<h3 id="二、软件管理"><a href="#二、软件管理" class="headerlink" title="二、软件管理"></a>二、软件管理</h3><ol>
+<li><strong>安装软件****￼</strong>sudo apt install &lt;包名&gt;￼（支持多包安装：sudo apt install pkg1 pkg2）￼（输入包名前半部分按 Tab 键补全）</li>
+<li><strong>卸载软件****￼</strong>sudo apt remove &lt;包名&gt;￼（仅删除软件，保留配置）￼sudo apt purge &lt;包名&gt;￼（彻底删除软件及配置）</li>
+<li><strong>清理无用依赖****￼</strong>sudo apt autoremove￼（自动删除不再需要的旧依赖包）</li>
+</ol>
+<h3 id="三、查询与信息"><a href="#三、查询与信息" class="headerlink" title="三、查询与信息"></a>三、查询与信息</h3><ol>
+<li><strong>搜索软件包****￼</strong>apt search &lt;关键词&gt;￼（如 apt search python3）</li>
+<li><strong>查看包详情****￼</strong>apt show &lt;包名&gt;￼（显示版本、依赖、描述等）</li>
+<li><strong>列出已安装包****￼</strong>apt list –installed￼（支持通配符过滤：apt list –installed <em>nginx</em>）</li>
+<li><strong>检查可升级包****￼</strong>apt list –upgradable￼（需先执行 apt update）</li>
+</ol>
+<h3 id="四、配置优化"><a href="#四、配置优化" class="headerlink" title="四、配置优化"></a>四、配置优化</h3><ol>
+<li><strong>更换软件源</strong></li>
+<li>编辑源文件：sudo nano /etc/apt/sources.list</li>
+<li>替换域名（如 us.archive.ubuntu.com → mirrors.aliyun.com）</li>
+<li>更新生效：sudo apt update</li>
+<li><strong>解决依赖问题****￼</strong>sudo apt -f install￼（修复缺失的依赖关系）</li>
+</ol>
+<h3 id="五、高级技巧"><a href="#五、高级技巧" class="headerlink" title="五、高级技巧"></a>五、高级技巧</h3><ol>
+<li><strong>下载不安装****￼</strong>sudo apt download &lt;包名&gt;￼（获取 .deb 安装包文件）</li>
+<li><strong>查看历史操作****￼</strong>cat /var/log/apt/history.log￼（记录所有 apt 命令的执行记录）</li>
+<li><strong>锁定软件版本****￼</strong>sudo apt-mark hold &lt;包名&gt;￼（防止误升级关键软件）</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>所有管理命令需 sudo 权限（除查询类命令）</li>
+<li>优先使用 apt 而非 apt-get（新版已整合功能）</li>
+<li>定期执行 sudo apt autoremove 保持系统清洁</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>czy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/11.apt%20%E5%B7%A5%E5%85%B7/1.apt%20%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="">http://example.com/2025/04/14/KB工具合集/linux工具/11.apt 工具/1.apt 工具介绍与使用/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/2.gdb%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/1.%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/14/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">czy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
