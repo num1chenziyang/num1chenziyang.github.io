@@ -320,7 +320,7 @@ git rebase --continue
 
 ------------------------------------------------------------------
 
-# 其他问题
+# （二）其他问题
 ## 1.特殊命令记录
 ```shell
 ##列出当前仓库中的所有本地分支。  
@@ -353,5 +353,223 @@ git config --global color.ui true
 git config color.ui true
 ```
 
+---
+
+# （三）Git自定义命令
+#### 一、`git lg` 自定义命令配置
+**配置路径**：修改 `~/.gitconfig` 文件（需 root 权限）  
+**添加内容**：
+```ini
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+```
+
+##### 1. 选项解释
+1. **`--color`**  
+   启用彩色输出，不同部分颜色区分更直观。
+2. **`--graph`**  
+   图形化显示提交历史，展示分支合并情况。
+3. **`--pretty=format`**  
+   自定义日志格式，关键占位符：  
+   • `%Cred%h%Creset`：红色显示短哈希值（默认前7位）。  
+   • `%C(yellow)%d%Creset`：黄色显示分支/标签名（如 `HEAD -> master`）。  
+   • `%s`：提交信息标题。  
+   • `%Cgreen(%cr)`：绿色显示相对提交时间（如 `2 days ago`）。  
+   • `%C(bold blue)<%an>`：蓝色加粗显示提交者名称。  
+4. **`--abbrev-commit`**  
+   缩短哈希值为短格式。
+
+##### 2. 示例输出
+```bash
+* 8a152db - (HEAD -> master) Add README.md (2 days ago) <Alice>
+*   73e5a28 - Merge branch 'feature' into dev (3 days ago) <Bob>
+|\  
+| * c9d920f - Update README.md (4 days ago) <Charlie>
+* | b56c9a4 - Fix typo (5 days ago) <David>
+|\  
+| * 2d5e8c6 - Initial commit (6 days ago) <Eve>
+```
+特点：图形化分支路径、颜色高亮关键信息、时间与作者展示清晰。
+
+---
+
+#### 二、常用自定义命令速查表
+| 自定义命令       | 等效命令                            | 功能说明                             | 参考来源   |
+|------------------|-------------------------------------|--------------------------------------|------------|
+| `git br`         | `git branch`                        | 查看分支列表                         |  |
+| `git co`         | `git checkout`                      | 切换分支/恢复文件                    |  |
+| `git ci`         | `git commit`                        | 提交变更                             |  |
+| `git st`         | `git status`                        | 查看工作区状态                       |  |
+| `git stn`        | `git status -uno`                   | 仅显示已跟踪文件状态（忽略未跟踪文件）|    |
+| `git last`       | `git log -1 HEAD`                   | 查看最新一次提交详情                 |  |
+| `git brv`        | `git branch -v`                     | 显示分支及最近提交信息               |  |
+| `git glog`       | `git log --graph`                   | 基础图形化日志（不含颜色格式）       |  |
+
+##### 关键说明
+1. **`git status -uno`**  
+   适用于忽略未跟踪文件（如临时文件）的场景，提升状态查看效率。
+2. **`git branch -v`**  
+   显示分支的最后提交哈希和标题，便于快速定位问题。
+3. **图形化日志扩展性**  
+   可通过组合 `--date`、`--author` 等参数进一步筛选日志。
+
+---
+
+#### 三、配置验证与使用
+1. **验证配置**  
+   ```bash
+   git config --global --list | grep alias
+   ```
+   输出应包含 `alias.lg` 及其他自定义命令。
+2. **全局生效**  
+   因配置在 `~/.gitconfig`，所有仓库均可使用这些命令。
+
+---
+
+# （四）git cherry-pick
+#### 一、基础用法
+##### 1. 合并单个提交  
+**命令**：  
+```bash
+git cherry-pick <commit-hash>
+```  
+**作用**：  
+将指定提交的修改应用到当前分支，生成新的提交记录（哈希值不同）。  
+**示例**：  
+```bash
+git cherry-pick a1b2c3d4  # 应用哈希为 a1b2c3d4 的提交
+git cherry-pick feature    # 应用 feature 分支最新提交
+```  
+**特点**：  
+• 支持跨分支操作（如从 `feature` 分支应用到 `master` 分支）。  
+• 默认自动生成提交信息，可用 `-e` 编辑信息。  
+
+---
+
+##### 2. 合并多个提交  
+**方法一（推荐）**：  
+```bash
+git cherry-pick <commit-hash1> <commit-hash2>
+```  
+**说明**：  
+逐个指定多个不连续的提交，安全性高，便于冲突处理。  
+
+**方法二（连续提交）**：  
+```bash
+git cherry-pick <start-commit>..<end-commit>   # 不包含起始提交
+git cherry-pick <start-commit>^..<end-commit>  # 包含起始提交
+```  
+**示例**：  
+```bash
+git cherry-pick 73e5a28..c9d920f  # 转移从提交 A 到 B 的所有变更
+```  
+**注意**：  
+• 起始提交必须早于结束提交，否则操作失败且无报错。  
+• 连续操作可能因冲突导致批量回退，建议先测试单个提交。  
+
+---
+
+#### 二、冲突处理
+##### 1. 冲突解决流程  
+1. **暂停操作**：  
+   Cherry-Pick 遇到冲突时会暂停，需手动解决冲突。  
+
+2. **标记解决**：  
+   ```bash
+   git add <resolved-files>  # 将解决后的文件加入暂存区
+   ```  
+
+3. **继续或取消**：  
+   ```bash
+   git cherry-pick --continue  # 继续完成操作
+   git cherry-pick --abort      # 放弃操作并恢复原状
+   git cherry-pick --quit       # 退出操作但保留当前状态
+   ```  
+
+##### 2. 多提交冲突处理建议  
+• **分步操作**：逐个应用提交，减少复杂冲突风险。  
+• **优先使用 `--no-commit`**：  
+  ```bash
+  git cherry-pick -n <commit-hash>  # 应用变更但不自动提交
+  ```  
+  手动检查后再提交，避免意外覆盖。  
+
+---
+
+#### 三、跨仓库操作
+##### 1. 添加远程仓库  
+```bash
+git remote add <remote-name> <git-url>  # 添加远程库
+git fetch <remote-name>                 # 同步远程分支信息
+```  
+**示例**：  
+```bash
+git remote add gerrit http://git.xxxx.com/A.git
+git fetch gerrit  # 获取仓库 A 的提交记录
+```  
+
+##### 2. 应用跨仓库提交  
+```bash
+git cherry-pick <remote-commit-hash>  # 应用远程仓库的提交
+```  
+**验证步骤**：  
+1. 查看远程提交记录：  
+   ```bash
+   git log gerrit/master  # 确认目标提交哈希
+   ```  
+2. 执行 Cherry-Pick：  
+   ```bash
+   git cherry-pick 2555c6e  # 应用指定提交
+   ```  
+
+---
+
+#### 四、高级配置与撤销
+##### 1. 常用配置项  
+• **`-x`**：在提交信息末尾追加来源信息（如 `(cherry picked from commit ...)`）。  
+• **`-m`**：处理合并提交时指定父分支（如 `-m 1` 表示接受变动的分支）。  
+• **`-s`**：添加操作者签名。  
+
+##### 2. 撤销操作  
+• **未推送时**：  
+  ```bash
+  git reset --hard HEAD~1   # 彻底撤销最后一次提交
+  git reset --soft HEAD~1   # 保留修改但不提交
+  ```  
+• **已推送时**：  
+  ```bash
+  git revert <commit-hash>  # 生成反向提交以撤销变更
+  ```  
+
+---
+
+# （五）git 实战记录
+## 一.其他库向 gerrit 上的库提交
+
+本地分支：ora/release/O15
+
+提交：fix bug to_date
+
+远程库：ora
+
+### 1.添加远程分支并 fetch
+
+git remote add gerrit [http://172.16.3.215:8080/code](http://172.16.3.215:8080/code)
+
+git fetch gerrit
+
+### 2.下载 commit_msg hook 脚本
+
+### 3.创建本地分支
+
+git checkout -b release/3.6.3 gerrit/release/3.6.3
+
+### 4.合并所需提交
+
+没有 change-id，见 git 命令合集。
+
+### 5.推到远端待 code review
+
+git push gerrit HEAD:refs/for/release/3.6.3
 
 ---
