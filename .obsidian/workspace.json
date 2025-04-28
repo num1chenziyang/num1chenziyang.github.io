@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "96207c222d321e82",
+        "id": "3ed6bc165bcbd48c",
         "type": "tabs",
         "children": [
           {
-            "id": "c3cf0be751ad79b6",
+            "id": "187a7fa4e5d290fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/KB命令合集/常用命令合集.md",
+                "file": "source/_posts/笔记博客搭建/1.OBSidian+HEXO+GitHub的笔记博客部署全流程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "常用命令合集"
+              "title": "1.OBSidian+HEXO+GitHub的笔记博客部署全流程"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 341.5
+    "width": 311.5
   },
   "right": {
     "id": "88df74b9f1050d91",
@@ -166,7 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 537.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,53 +182,53 @@
       "obsidian-importer:Open Importer": false
     }
   },
-  "active": "c3cf0be751ad79b6",
+  "active": "fb6b15f3b6a8476d",
   "lastOpenFiles": [
-    "source/template 2/SI技术学习.md",
-    "source/template 2/SDLC编译工作-编译实战.md",
-    "source/template 2/SDLC流程记录.md",
-    "source/template 2/SDLC机器支持.md",
-    "source/template 2/KB工具合集.md",
-    "source/template 2/KB命令合集.md",
-    "source/template 2",
+    "source/_posts/SDLC机器支持/（实战）2.机器记录.md",
+    "source/_posts/SDLC测试工作/UTM/1.NQA测试工具详解.md",
+    "source/_posts/SDLC测试工作/UTM/2.NQA实战问题记录.md",
+    "source/_posts/KB工具合集/linux工具/linux软件包管理工具.md",
+    "source/_posts/KB工具合集/linux工具/samba文件共享工具.md",
+    "source/_posts/KB工具合集/linux工具/gdb调试工具.md",
+    "source/_posts/KB工具合集/软件合集/vscode.md",
+    "source/_posts/SDLC功能开发/1.各种组件调试方法.md",
+    "source/_posts/KB工具合集/linux工具/未命名.md",
+    "source/_posts/SDLC编译工作/编译知识体系/4.动态库与静态库.md",
+    "source/_posts/SDLC功能开发/伪表技术开发/1.伪表技术详解.md",
+    "source/_posts/SDLC机器支持/5.国产架构说明.md",
+    "source/_posts/SDLC功能开发/伪表技术开发",
+    "source/_posts/SDLC功能开发/（实战）1.导入导出工具开发.md",
+    "source/_posts/SDLC功能开发/（实战）2.to_date内建函数开发.md",
+    "source/_posts/SDLC机器支持/3.LVM的核心概念​.md",
+    "source/_posts/SDLC机器支持/2.机器运维命令.md",
+    "source/_posts/SDLC机器支持/1.安装系统与网络配置.md",
+    "source/_posts/KB命令合集/常用命令合集.md",
     "source/_posts/KB命令合集/find命令.md",
     "source/_posts/KB命令合集/grep命令.md",
     "source/_posts/KB命令合集/mount命令.md",
-    "source/_posts/SDLC机器支持/（实战）2.机器记录.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）8.x86_64-New_Start_V6.md",
-    "source/_posts/SDLC编译工作/编译实战/（实战）3.power架构-AIX7.1.md",
-    "source/_posts/SDLC机器支持/（实战）1.机器修复.md",
+    "source/_posts/SDLC流程记录/4.内建函数开发流程.md",
+    "source/attachments/SDLC流程记录/to_date 结构图.png",
+    "source/_posts/SDLC流程记录/3.udr开发流程.md",
+    "source/attachments/SDLC流程记录",
+    "source/attachments/未命名.md",
     "source/_posts/SDLC流程记录/1.发版流程.md",
-    "source/_posts/KB_虚拟机/1.QEMU与VMware虚拟机.md",
-    "source/_posts/KB工具合集/软件合集/开发栈.md",
-    "source/_posts/KB工具合集/linux工具/vim文本编辑器.md",
-    "source/_posts/KB工具合集/linux工具/samba文件共享工具.md",
-    "source/_posts/KB工具合集/linux工具/linux软件包管理工具.md",
-    "source/_posts/KB工具合集/linux工具/gdb调试工具.md",
-    "source/_posts/KB工具合集/通用工具/git项目管理工具.md",
-    "source/_posts/KB工具合集/通用工具/docker容器.md",
-    "source/_posts/KB工具合集/通用工具/正则表达式.md",
-    "source/_posts/KB工具合集/linux工具/2.gdb调试工具/4.openssl调试.md",
-    "source/_posts/KB工具合集/linux工具/2.gdb调试工具/3.调试oninit.md",
-    "source/_posts/KB工具合集/linux工具/2.gdb调试工具/1.常用方法.md",
+    "source/attachments/笔记博客搭建/ACCESS_TOKEN配置.png",
+    "source/attachments/笔记博客搭建/Install.png.png",
+    "source/attachments/笔记博客搭建/PKMER.png",
+    "source/attachments/笔记博客搭建/Pasted image 20250330232147.png",
+    "source/_posts/SDLC流程记录/2.重做bltfprcc.c流程.md",
+    "source/_posts/SDLC功能开发",
+    "source/template 2",
+    "source/template",
     "source/_posts/SDLC测试工作/UTM",
     "source/_posts/SDLC测试工作",
     "source/_posts/SDLC机器支持 2",
     "source/_posts/SDLC机器支持",
     "source/_posts/KB命令合集/mount命令",
-    "source/_posts/KB命令合集/linux命令",
-    "source/template",
-    "source/_posts/SDLC编译工作/编译知识体系",
-    "source/_posts/SDLC编译工作/编译环境搭建",
     "public/images/cc-by-nc-sa.svg",
     "public/images/background.jpg",
     "public/images/apple-touch-icon-next.png",
     "public/images/avatar.gif",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/PKMER.png",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Install.png.png",
-    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/ACCESS_TOKEN配置.png",
-    "public/attachments/hello-world/Pasted image 20250330233205.png",
-    "public/images/favicon-32x32-next.png"
+    "public/attachments/OBSidian+HEXO+GitHub的笔记博客部署全流程/Pasted image 20250330232147.png"
   ]
 }
