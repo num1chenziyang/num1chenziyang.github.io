@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto+Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="一.&#x2F;vobs 分支143，rd_test VR 开头的都是 WQY 管理、分析过的。 QATEST 就是 rd_test 的 NQA 版本，待分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.W-NQA交接内容">
+<meta property="og:url" content="http://example.com/2025/04/20/SDLC%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C/UTM/3.W-NQA%E4%BA%A4%E6%8E%A5%E5%86%85%E5%AE%B9/index.html">
+<meta property="og:site_name" content="ChenSir">
+<meta property="og:description" content="一.&#x2F;vobs 分支143，rd_test VR 开头的都是 WQY 管理、分析过的。 QATEST 就是 rd_test 的 NQA 版本，待分析">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-20T07:28:23.000Z">
+<meta property="article:modified_time" content="2025-04-28T15:31:40.991Z">
+<meta property="article:author" content="czy">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/04/20/SDLC%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C/UTM/3.W-NQA%E4%BA%A4%E6%8E%A5%E5%86%85%E5%AE%B9/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>3.W-NQA交接内容 | ChenSir</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ChenSir</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一旦出发，必须到达</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-vobs-%E5%88%86%E6%94%AF"><span class="nav-text">一.&#x2F;vobs 分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-work-%E5%88%86%E6%94%AF"><span class="nav-text">二.&#x2F;work 分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%99%A8"><span class="nav-text">三.测试机器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-NQA-%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="nav-text">四.NQA 命令使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-F-getfailinfo-sh%EF%BC%9A"><span class="nav-text">1.F_getfailinfo.sh：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-F-grep-list-sh%EF%BC%9A"><span class="nav-text">2.F_grep_list.sh：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-gettc-install-sh"><span class="nav-text">3.gettc_install.sh:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-list-test-sh"><span class="nav-text">4.list_test.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-list-test-single-sh"><span class="nav-text">5.list_test_single.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-single-test-sh"><span class="nav-text">6.single_test.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-runloop-NQA-sh"><span class="nav-text">7.runloop_NQA.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-runloop-WQY-sh"><span class="nav-text">8.runloop_WQY.sh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94-NQA-%E8%B0%83%E8%AF%95"><span class="nav-text">五.NQA 调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-IQA1210-cfg%EF%BC%88%E5%BE%80%E5%BE%80%E6%98%AF%E9%85%8D%E7%BD%AE%E8%87%AA%E5%B7%B1%E7%9A%84-IQA1210-czy-cfg-%E4%BB%A5%E4%BE%9B%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-text">1.IQA1210.cfg（往往是配置自己的 IQA1210_czy.cfg 以供使用）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-1-gt-O-COMPATIBLE-%E5%8F%82%E6%95%B0"><span class="nav-text">&lt;1&gt;O_COMPATIBLE 参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-2-gt-HOSTNAME"><span class="nav-text">&lt;2&gt;HOSTNAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-3-gt-STOP-TEST-ON-FAILURE"><span class="nav-text">&lt;3&gt;STOP_TEST_ON_FAILURE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-4-gt-ENABLE-NULL-STRING-%E4%B8%8E-ENABLE-NULL-STRING"><span class="nav-text">&lt;4&gt;ENABLE_NULL_STRING 与 ENABLE_NULL_STRING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-5-gt-GBASEDBTDIR"><span class="nav-text">&lt;5&gt;GBASEDBTDIR</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD-UTM-%E7%BB%84%E4%BB%B6%EF%BC%88-work-workiqa-utm%EF%BC%89"><span class="nav-text">六.UTM 组件（&#x2F;work&#x2F;workiqa&#x2F;utm）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-QApasswordFile-%E6%96%87%E4%BB%B6%EF%BC%88-work-workiqa-utm-QApasswordFile%EF%BC%89"><span class="nav-text">2.QApasswordFile 文件（&#x2F;work&#x2F;workiqa&#x2F;utm&#x2F;QApasswordFile）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83-NQA-%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="nav-text">七.NQA 新功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-xrun-%E5%91%BD%E4%BB%A4"><span class="nav-text">1.xrun 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-nqa-%E5%B7%A5%E5%85%B7"><span class="nav-text">2.nqa 工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-xnqa"><span class="nav-text">3.xnqa</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D-1"><span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95"><span class="nav-text">2.修改方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8E%E5%AE%89%E8%A3%85%E7%9A%84%E5%88%A4%E6%96%AD"><span class="nav-text">3.关于安装的判断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB-nqa-%E9%83%A8%E7%BD%B2"><span class="nav-text">八.nqa 部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%9D-nqa-%E5%88%86%E6%9E%90"><span class="nav-text">九.nqa 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-runloop-WQY-sh%EF%BC%88%E7%9C%8B%E4%B8%80%E4%B8%8B%E8%84%9A%E6%9C%AC%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="nav-text">1.runloop_WQY.sh（看一下脚本即可）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%86%E6%9E%90"><span class="nav-text">2.分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-1-gt-jdbc-%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="nav-text">&lt;1&gt;jdbc 类问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-2-gt-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-text">&lt;2&gt;其他问题</span></a></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">czy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://choubin.site/" title="http:&#x2F;&#x2F;choubin.site" rel="noopener" target="_blank">yearito</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusk-wind.github.io/" title="https:&#x2F;&#x2F;dusk-wind.github.io" rel="noopener" target="_blank">天凉の小站</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+      <div class="music-player-container">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13546769057&auto=1&height=430"></iframe>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/20/SDLC%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C/UTM/3.W-NQA%E4%BA%A4%E6%8E%A5%E5%86%85%E5%AE%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3.W-NQA交接内容
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-20 15:28:23" itemprop="dateCreated datePublished" datetime="2025-04-20T15:28:23+08:00">2025-04-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2025-04-28 23:31:40" itemprop="dateModified" datetime="2025-04-28T23:31:40+08:00">2025-04-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SDLC%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">SDLC测试工作</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="一-vobs-分支"><a href="#一-vobs-分支" class="headerlink" title="一./vobs 分支"></a>一./vobs 分支</h1><p>143，rd_test</p>
+<p>VR 开头的都是 WQY 管理、分析过的。</p>
+<p>QATEST 就是 rd_test 的 NQA 版本，待分析</p>
+<p>352 可能错多一点</p>
+<hr>
+<h1 id="二-work-分支"><a href="#二-work-分支" class="headerlink" title="二./work 分支"></a>二./work 分支</h1><p>143，rd_test</p>
+<p>git 分支：NQA_Zone_WQY</p>
+<p>/work 下的一些库是江哥专门为大写改的库，151 现在暂时只能跑 O15 大写</p>
+<hr>
+<h1 id="三-测试机器"><a href="#三-测试机器" class="headerlink" title="三.测试机器"></a>三.测试机器</h1><p>NQA：151,122,160</p>
+<p>QA：151,186（测试部新增用例，切换 QA 目录就能跑）（QA 的 utm 新一些）</p>
+<hr>
+<h1 id="四-NQA-命令使用"><a href="#四-NQA-命令使用" class="headerlink" title="四.NQA 命令使用"></a>四.NQA 命令使用</h1><h2 id="1-F-getfailinfo-sh："><a href="#1-F-getfailinfo-sh：" class="headerlink" title="1.F_getfailinfo.sh："></a>1.F_getfailinfo.sh：</h2><p>对列表文件执行，打印 fail 的前后信息</p>
+<p>sh F_getfailinfo.sh fail_list</p>
+<h2 id="2-F-grep-list-sh："><a href="#2-F-grep-list-sh：" class="headerlink" title="2.F_grep_list.sh："></a>2.F_grep_list.sh：</h2><p>对列表文件执行，打印文件中是否包含输入的错误信息</p>
+<p>sh F_getfailinfo.sh fail_list AF</p>
+<h2 id="3-gettc-install-sh"><a href="#3-gettc-install-sh" class="headerlink" title="3.gettc_install.sh:"></a>3.gettc_install.sh:</h2><p>部署 NQA 环境参考此脚本（不要直接执行，因为会删除本地的一些东西，照着步骤一步一步手动做就好）</p>
+<h2 id="4-list-test-sh"><a href="#4-list-test-sh" class="headerlink" title="4.list_test.sh"></a>4.list_test.sh</h2><p>并发跑 list</p>
+<p>sh list_test.sh fail_list</p>
+<h2 id="5-list-test-single-sh"><a href="#5-list-test-single-sh" class="headerlink" title="5.list_test_single.sh"></a>5.list_test_single.sh</h2><p>单个跑 list</p>
+<p>sh list_test_single.sh fail_list</p>
+<h2 id="6-single-test-sh"><a href="#6-single-test-sh" class="headerlink" title="6.single_test.sh"></a>6.single_test.sh</h2><p>单跑 tdl 文件</p>
+<p>sh single_test.sh /vobs/test/test.tdl</p>
+<p>直接用 xrun 代替此命令</p>
+<h2 id="7-runloop-NQA-sh"><a href="#7-runloop-NQA-sh" class="headerlink" title="7.runloop_NQA.sh"></a>7.runloop_NQA.sh</h2><p>老的全跑脚本，现在可以不用</p>
+<p>sh runloop_NQA.sh</p>
+<p>其跑的用例列表是/work/workiqa/testlist/testlist_NQA/NQA_testlist，比较原始，有一些过不了的用例没删（想改跑的用例可以自己改，也可以改对应的脚本）</p>
+<h2 id="8-runloop-WQY-sh"><a href="#8-runloop-WQY-sh" class="headerlink" title="8.runloop_WQY.sh"></a>8.runloop_WQY.sh</h2><p>新的全跑脚本，现在都用这个（两次并发加一次串行，并发跑错误用例，速度更快）</p>
+<p>sh runloop_WQY.sh</p>
+<p>xnqa 命令的一部分</p>
+<p>其跑的用例列表是/work/workiqa/testlist/testlist_WQY/NQA_testlist，新的，不需要跑的用例都删了（想改跑的用例可以自己改，也可以改对应的脚本）</p>
+<hr>
+<h1 id="五-NQA-调试"><a href="#五-NQA-调试" class="headerlink" title="五.NQA 调试"></a>五.NQA 调试</h1><p><a href="1.NQA%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3.md#%EF%BC%88%E4%B8%80%EF%BC%89NQA%E5%B7%A5%E5%85%B7%E7%BB%93%E6%9E%84">（一）NQA工具结构</a></p>
+<h2 id="1-IQA1210-cfg（往往是配置自己的-IQA1210-czy-cfg-以供使用）"><a href="#1-IQA1210-cfg（往往是配置自己的-IQA1210-czy-cfg-以供使用）" class="headerlink" title="1.IQA1210.cfg（往往是配置自己的 IQA1210_czy.cfg 以供使用）"></a>1.IQA1210.cfg（往往是配置自己的 IQA1210_czy.cfg 以供使用）</h2><h3 id="lt-1-gt-O-COMPATIBLE-参数"><a href="#lt-1-gt-O-COMPATIBLE-参数" class="headerlink" title="&lt;1&gt;O_COMPATIBLE 参数"></a>&lt;1&gt;O_COMPATIBLE 参数</h3><p>YES 就是开启 O 兼容大写模式（开了之后，load 语句支持 O 兼容大写，不会报错了，否则关于 load 的地方都会报错）</p>
+<h3 id="lt-2-gt-HOSTNAME"><a href="#lt-2-gt-HOSTNAME" class="headerlink" title="&lt;2&gt;HOSTNAME"></a>&lt;2&gt;HOSTNAME</h3><p>IP 地址，部署在新机器上的时候注意改为新机器的 IP（有时候跑不过可能由此导致）</p>
+<h3 id="lt-3-gt-STOP-TEST-ON-FAILURE"><a href="#lt-3-gt-STOP-TEST-ON-FAILURE" class="headerlink" title="&lt;3&gt;STOP_TEST_ON_FAILURE"></a>&lt;3&gt;STOP_TEST_ON_FAILURE</h3><p>此参数若为 NO，则单个 tdl 用例报第一个错，此用例会停止（全跑跑得快，但是不利于调试）。</p>
+<p>此参数若为 YES，则则单个 tdl 用例遇到报错也不会停止（全跑跑得慢，有利于调试，批量修改错误）</p>
+<h3 id="lt-4-gt-ENABLE-NULL-STRING-与-ENABLE-NULL-STRING"><a href="#lt-4-gt-ENABLE-NULL-STRING-与-ENABLE-NULL-STRING" class="headerlink" title="&lt;4&gt;ENABLE_NULL_STRING 与 ENABLE_NULL_STRING"></a>&lt;4&gt;ENABLE_NULL_STRING 与 ENABLE_NULL_STRING</h3><p>此参数影响空格与 NULL 有关，修改与否可以影响一个用例的过和不过，问题不大。</p>
+<h3 id="lt-5-gt-GBASEDBTDIR"><a href="#lt-5-gt-GBASEDBTDIR" class="headerlink" title="&lt;5&gt;GBASEDBTDIR"></a>&lt;5&gt;GBASEDBTDIR</h3><p>指向静默安装目录，往往是使用自己的 single_test.sh 脚本时，配置一个固定的 GBASEDBTDIR 方便自己跑用例。</p>
+<hr>
+<h1 id="六-UTM-组件（-work-workiqa-utm）"><a href="#六-UTM-组件（-work-workiqa-utm）" class="headerlink" title="六.UTM 组件（/work/workiqa/utm）"></a>六.UTM 组件（/work/workiqa/utm）</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>NQA 工具的依赖资源所在，核心组件，基本上不用动（O15 用的是最新的 UTM 即 utm_qa.tar）。其他的分支用的老的 UTM（如 330utm.zip、340utm.zip、3XXutm.zip 等）跑，暂时没什么问题。是否升级最新的 UTM 视具体情况而定。</p>
+<h2 id="2-QApasswordFile-文件（-work-workiqa-utm-QApasswordFile）"><a href="#2-QApasswordFile-文件（-work-workiqa-utm-QApasswordFile）" class="headerlink" title="2.QApasswordFile 文件（/work/workiqa/utm/QApasswordFile）"></a>2.QApasswordFile 文件（/work/workiqa/utm/QApasswordFile）</h2><p>以前是 userid sqlqa sh single_test.sh /vobs/test/test.tdl 命令跑</p>
+<p>现在使用 root 用户跑，root 用户的密码需要在此进行配置</p>
+<p>root:redhat151!</p>
+<hr>
+<h1 id="七-NQA-新功能"><a href="#七-NQA-新功能" class="headerlink" title="七.NQA 新功能"></a>七.NQA 新功能</h1><h2 id="1-xrun-命令"><a href="#1-xrun-命令" class="headerlink" title="1.xrun 命令"></a>1.xrun 命令</h2><p>配置进～/.bashrc 的命令，即 sh single_test.sh /vobs/test/test.sh</p>
+<h2 id="2-nqa-工具"><a href="#2-nqa-工具" class="headerlink" title="2.nqa 工具"></a>2.nqa 工具</h2><p>配置进～/.bashrc 的命令，进入/home/wqy/F_NQA/，sh X_WQY.sh</p>
+<p>参数：q，d，k，c，w（可以都试试）</p>
+<p>（部署可以用 c，一步一步来，但是现在已经被 xnqa 取代）</p>
+<p>（包括 X_WQY.sh，Y_WQY.sh，Z_WQY.sh）</p>
+<h2 id="3-xnqa"><a href="#3-xnqa" class="headerlink" title="3.xnqa"></a>3.xnqa</h2><h3 id="1-介绍-1"><a href="#1-介绍-1" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>&lt;1&gt;配置进～/.bashrc 的命令，进入/home/wqy/F_NQA/，sh D_WQY.sh</p>
+<p>&lt;2&gt;在 ids 安装包目录下（至少有 ids，csdk 和 jdbc 可选），执行命令：xnqa 351，即可在当前目录下，自动生成目录并静默安装 ids、csdk、jdbc，然后开始跑对应 git 分支的/vobs 用例。</p>
+<h3 id="2-修改方法"><a href="#2-修改方法" class="headerlink" title="2.修改方法"></a>2.修改方法</h3><p>&lt;1&gt;现在只包含现有的 git 分支、默认 jdbc、默认 csdk，如果后续有新版本（如 O16、363 等），需要更改脚本和添加新的 jdbc 资源和 csdk 资源。</p>
+<h3 id="3-关于安装的判断"><a href="#3-关于安装的判断" class="headerlink" title="3.关于安装的判断"></a>3.关于安装的判断</h3><p>&lt;1&gt;按照文件大小，自动取得 ids，csdk，jdbc（100m，250m）</p>
+<p>&lt;2&gt;判断 ids 的 bin 下的文件数量，若小于 40，则判定静默安装失败，退出。</p>
+<p>&lt;3&gt;判断 csdk 是否安装成功，是安装 csdk 后，静默安装目录下的 bin 下的文件数量大于 ids 安装完成后 bin 下的文件数量（因为他们静默安装是同一个 bin），则判定 csdk 安装成功。</p>
+<p>&lt;4&gt;xnqa 就是想安装一下不全跑，把D_WQY.sh 中，sh runloop_WQY.sh 注释掉即可。</p>
+<hr>
+<h1 id="八-nqa-部署"><a href="#八-nqa-部署" class="headerlink" title="八.nqa 部署"></a>八.nqa 部署</h1><p><a href="1.NQA%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3.md#%EF%BC%88%E4%BA%8C%EF%BC%89NQA%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2">（二）NQA环境部署</a></p>
+<hr>
+<h1 id="九-nqa-分析"><a href="#九-nqa-分析" class="headerlink" title="九.nqa 分析"></a>九.nqa 分析</h1><h2 id="1-runloop-WQY-sh（看一下脚本即可）"><a href="#1-runloop-WQY-sh（看一下脚本即可）" class="headerlink" title="1.runloop_WQY.sh（看一下脚本即可）"></a>1.runloop_WQY.sh（看一下脚本即可）</h2><p>此脚本优化了跑用例流程：</p>
+<p>&lt;1&gt;/work/workiqa/rerunlist/a2_rerun.list 中，是通不过、慢、影响别人等的不良用例，是写死的，现阶段共 44 个用例。</p>
+<p>&lt;2&gt;先第一次并发跑，800 多个，fail 的结果存入/work/workiqa/rerunlist/a1_rerun.list。</p>
+<p>&lt;3&gt;然后第二次并发跑，跑的是 a_rerun.list（a1_rerun.list 和 a2_rerun.list 合并去重之后的结果），结果存入 b1_rerun.list。</p>
+<p>&lt;4&gt;/work/workiqa/rerunlist/b2_rerun.list 中，是并行跑不过、串行可能跑过的用例，是写死的，现阶段共 47 个用例。</p>
+<p>&lt;5&gt;最后第三次串行跑，跑的是 b_rerun.list（b1_rerun.list 和 b2_rerun.list 合并去重之后的结果），结果集生成在 report_bak 中，nqa 测试结束。</p>
+<h2 id="2-分析"><a href="#2-分析" class="headerlink" title="2.分析"></a>2.分析</h2><h3 id="lt-1-gt-jdbc-类问题"><a href="#lt-1-gt-jdbc-类问题" class="headerlink" title="&lt;1&gt;jdbc 类问题"></a>&lt;1&gt;jdbc 类问题</h3><p>现象：java 不认大写、不认类型 varchar 等，能看出来跟 jdbc 有关系。</p>
+<p>分析：utm 里的 jdbc 工具跟 ids 配套的 jdbc 差异过大，应把 ids 配套的 jdbc 更新到 utm 里。</p>
+<p>解决：见密网笔记—#替换jar包</p>
+<h3 id="lt-2-gt-其他问题"><a href="#lt-2-gt-其他问题" class="headerlink" title="&lt;2&gt;其他问题"></a>&lt;2&gt;其他问题</h3><p>解决：见密网笔记—wqy的nqa分析笔记</p>
+
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>czy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2025/04/20/SDLC%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C/UTM/3.W-NQA%E4%BA%A4%E6%8E%A5%E5%86%85%E5%AE%B9/" title="3.W-NQA交接内容">http://example.com/2025/04/20/SDLC测试工作/UTM/3.W-NQA交接内容/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/17/SDLC%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C/UTM/2.NQA%E5%AE%9E%E6%88%98%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="prev" title="2.NQA实战问题记录">
+                  <i class="fa fa-chevron-left"></i> 2.NQA实战问题记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/20/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/linux%E5%B7%A5%E5%85%B7/vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" rel="next" title="vim文本编辑器">
+                  vim文本编辑器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">czy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

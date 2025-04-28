@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto+Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="（一）mount 命令全面解析一、基础概念与功能扩展mount 命令不仅是用户空间工具，还与 Linux 内核深度关联。其包括：   1. 系统调用与内核交互">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mount 命令">
+<meta property="og:url" content="http://example.com/2025/04/10/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/mount%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="ChenSir">
+<meta property="og:description" content="（一）mount 命令全面解析一、基础概念与功能扩展mount 命令不仅是用户空间工具，还与 Linux 内核深度关联。其包括：   1. 系统调用与内核交互">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-10T01:29:19.000Z">
+<meta property="article:modified_time" content="2025-04-28T15:31:40.990Z">
+<meta property="article:author" content="czy">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/04/10/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/mount%E5%91%BD%E4%BB%A4/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>mount 命令 | ChenSir</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">ChenSir</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一旦出发，必须到达</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89mount-%E5%91%BD%E4%BB%A4%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90"><span class="nav-text">（一）mount 命令全面解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%8A%9F%E8%83%BD%E6%89%A9%E5%B1%95"><span class="nav-text">一、基础概念与功能扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%B8%8E%E5%86%85%E6%A0%B8%E4%BA%A4%E4%BA%92"><span class="nav-text">1. 系统调用与内核交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E9%95%9C%E5%83%8F%E6%94%AF%E6%8C%81"><span class="nav-text">2. 虚拟化与镜像支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0%E4%B8%8E%E9%AB%98%E7%BA%A7%E9%80%89%E9%A1%B9"><span class="nav-text">二、命令参数与高级选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90"><span class="nav-text">1. 核心参数深度解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF%E5%8F%82%E6%95%B0"><span class="nav-text">2. 特殊场景参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%A8%E5%9C%BA%E6%99%AF%E6%8C%82%E8%BD%BD%E5%AE%9E%E8%B7%B5"><span class="nav-text">三、全场景挂载实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%89%A9%E7%90%86%E8%AE%BE%E5%A4%87%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8"><span class="nav-text">1. 物理设备与网络存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%87%8D%E5%90%AFnfs%E6%9C%8D%E5%8A%A1"><span class="nav-text">二.重启nfs服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%9C%A8172-16-4-200%E4%B8%8A%E6%89%A7%E8%A1%8C%E6%8C%82%E8%BD%BD%E5%91%BD%E4%BB%A4"><span class="nav-text">三.在172.16.4.200上执行挂载命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%BC%BA%E5%88%B6%E5%8D%B8%E8%BD%BD"><span class="nav-text">四.强制卸载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8mount%E4%B8%94%E6%8C%81%E4%B9%85%E5%8C%96mount"><span class="nav-text">（三）跨服务器mount且持久化mount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87"><span class="nav-text">一、前置准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%B4%E6%97%B6%E6%8C%82%E8%BD%BD%E6%B5%8B%E8%AF%95"><span class="nav-text">二、临时挂载测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%8C%81%E4%B9%85%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-text">三、持久化配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%98%B2%E6%95%85%E9%9A%9C%E5%A2%9E%E5%BC%BA%E6%8E%AA%E6%96%BD%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-text">四、防故障增强措施（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%95%85%E9%9A%9C%E5%9C%BA%E6%99%AF%E5%BA%94%E5%AF%B9"><span class="nav-text">五、故障场景应对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%A1%A5%E5%85%85%E5%BB%BA%E8%AE%AE"><span class="nav-text">六、补充建议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E5%85%B6%E4%BB%96%E6%83%85%E5%86%B5"><span class="nav-text">（四）其他情况</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-iso-%E6%96%87%E4%BB%B6%E6%8C%82%E8%BD%BD"><span class="nav-text">一.iso 文件挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-linux-%E7%89%A9%E7%90%86%E6%9C%BAU%E7%9B%98%E6%8C%82%E8%BD%BD"><span class="nav-text">二.linux 物理机U盘挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A1%AE%E5%AE%9AUSB%E8%AE%BE%E5%A4%87%E7%9A%84%E8%AE%BE%E5%A4%87%E8%8A%82%E7%82%B9"><span class="nav-text">1.确定USB设备的设备节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8C%82%E8%BD%BD-U-%E7%9B%98"><span class="nav-text">2.挂载 U 盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-tmp%E6%8C%82%E8%BD%BD"><span class="nav-text">三.&#x2F;tmp挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%B4%E6%97%B6%E9%87%8D%E6%96%B0%E6%8C%82%E8%BD%BD%EF%BC%88%E9%80%82%E7%94%A8%E4%BA%8E-tmpfs%EF%BC%89"><span class="nav-text">1.临时重新挂载（适用于 tmpfs）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B0%B8%E4%B9%85%E4%BF%AE%E6%94%B9%E6%8C%82%E8%BD%BD%E9%85%8D%E7%BD%AE%E2%80%8B%E2%80%8B"><span class="nav-text">2.永久修改挂载配置​​</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">czy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://choubin.site/" title="http:&#x2F;&#x2F;choubin.site" rel="noopener" target="_blank">yearito</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusk-wind.github.io/" title="https:&#x2F;&#x2F;dusk-wind.github.io" rel="noopener" target="_blank">天凉の小站</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+      <div class="music-player-container">
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=13546769057&auto=1&height=430"></iframe>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/10/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/mount%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="czy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenSir">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mount 命令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-10 09:29:19" itemprop="dateCreated datePublished" datetime="2025-04-10T09:29:19+08:00">2025-04-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2025-04-28 23:31:40" itemprop="dateModified" datetime="2025-04-28T23:31:40+08:00">2025-04-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">KB命令合集</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="（一）mount-命令全面解析"><a href="#（一）mount-命令全面解析" class="headerlink" title="（一）mount 命令全面解析"></a>（一）mount 命令全面解析</h1><h2 id="一、基础概念与功能扩展"><a href="#一、基础概念与功能扩展" class="headerlink" title="一、基础概念与功能扩展"></a>一、基础概念与功能扩展</h2><p>mount 命令不仅是用户空间工具，还与 Linux 内核深度关联。其包括：  </p>
+<h3 id="1-系统调用与内核交互"><a href="#1-系统调用与内核交互" class="headerlink" title="1. 系统调用与内核交互"></a>1. 系统调用与内核交互</h3><p>&lt;1&gt; <strong>mount()/umount()函数</strong>：通过<code>#include &lt;sys/mount.h&gt;</code>调用，支持编程层面的挂载操作。<br>&lt;2&gt; <strong>mountflags参数</strong>：<br>• <code>MS_BIND</code>：实现目录绑定挂载（如<code>mount --bind</code>）<br>• <code>MS_RDONLY</code>：强制只读模式（即使设备支持写入）<br>• <code>MS_REMOUNT</code>：动态修改已挂载文件系统的属性（如从只读切为读写）。  </p>
+<h3 id="2-虚拟化与镜像支持"><a href="#2-虚拟化与镜像支持" class="headerlink" title="2. 虚拟化与镜像支持"></a>2. 虚拟化与镜像支持</h3><p>&lt;1&gt; <strong>ISO/BIN/MDF等镜像</strong>：通过<code>-o loop</code>挂载为虚拟光驱（例：<code>mount -o loop image.iso /mnt</code>）。<br>&lt;2&gt; <strong>虚拟机磁盘格式</strong>：支持VHD（VirtualBox）、VMDK（VMware）等，需配合虚拟机工具（如<code>qemu-nbd</code>）挂载。  </p>
+<h2 id="二、命令参数与高级选项"><a href="#二、命令参数与高级选项" class="headerlink" title="二、命令参数与高级选项"></a>二、命令参数与高级选项</h2><h3 id="1-核心参数深度解析"><a href="#1-核心参数深度解析" class="headerlink" title="1. 核心参数深度解析"></a>1. 核心参数深度解析</h3><p>&lt;1&gt; **-t [文件系统类型]**：<br>• 支持<code>ext4/ntfs/nfs/cifs/iso9660</code>等超过50种类型<br>• 自动检测机制：若未指定类型，内核通过<code>/proc/filesystems</code>尝试匹配。<br>&lt;2&gt; **-o [挂载选项]**：<br>• <strong>权限控制</strong>：<code>noexec</code>（禁止执行程序）、<code>nosuid</code>（忽略SUID权限）<br>• <strong>配额管理</strong>：<code>usrquota/grpquota</code>启用用户/组磁盘配额<br>• <strong>网络优化</strong>：<code>nfsvers=4</code>指定NFS版本，<code>vers=3</code>用于兼容旧服务器。  </p>
+<h3 id="2-特殊场景参数"><a href="#2-特殊场景参数" class="headerlink" title="2. 特殊场景参数"></a>2. 特殊场景参数</h3><p>&lt;1&gt; <strong>–bind</strong>：实现目录映射（例：<code>mount --bind /var/log /mnt/logs</code>），常用于容器或隔离环境。<br>&lt;2&gt; <strong>-l/–show-labels</strong>：显示文件系统标签（需<code>e2label</code>预先设置）。  </p>
+<h2 id="三、全场景挂载实践"><a href="#三、全场景挂载实践" class="headerlink" title="三、全场景挂载实践"></a>三、全场景挂载实践</h2><h3 id="1-物理设备与网络存储"><a href="#1-物理设备与网络存储" class="headerlink" title="1. 物理设备与网络存储"></a>1. 物理设备与网络存储</h3><p>&lt;1&gt; <strong>NTFS分区挂载</strong>：需安装<code>ntfs-3g</code>软件包（Ubuntu/Debian：<code>sudo apt install ntfs-3g</code>）。<br>&lt;2&gt; <strong>SMB/CIFS共享</strong>：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mount -t cifs //192.168.1.100/share /mnt -o username=user,password=pass,sec=ntlmssp  </span><br><span class="line">```  </span><br><span class="line">支持域认证（`domain=example.com`）和文件缓存优化（`cache=strict`）。  </span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. 虚拟化与容器集成  </span></span><br><span class="line">&lt;1&gt; OverlayFS挂载**：用于容器分层存储（Docker默认驱动）：  </span><br><span class="line">```bash  </span><br><span class="line">mount -t overlay overlay -o lowerdir=/lower,upperdir=/upper,workdir=/work /merged  </span><br><span class="line">```  </span><br><span class="line">&lt;2&gt; **tmpfs内存文件系统**：  </span><br><span class="line">```bash  </span><br><span class="line">mount -t tmpfs -o size=512M tmpfs /mnt/ramdisk  <span class="comment"># 创建512MB内存盘  </span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 四、系统配置与自动化  </span></span><br><span class="line"><span class="comment">### 1. /etc/fstab 文件详解  </span></span><br><span class="line">配置格式：  </span><br><span class="line">```  </span><br><span class="line">设备路径 挂载点 文件系统类型 挂载选项 dump标志 fsck顺序  </span><br><span class="line">```  </span><br><span class="line">&lt;1&gt; **dump标志**：  </span><br><span class="line">• `0`：禁用备份（默认）  </span><br><span class="line">• `1`：启用`dump`工具备份。  </span><br><span class="line">&lt;2&gt; **fsck顺序**：  </span><br><span class="line">• `0`：不检查  </span><br><span class="line">• `1`：优先检查（根分区）  </span><br><span class="line">• `2`：次要检查（其他分区）。  </span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. 用户权限控制  </span></span><br><span class="line">&lt;1&gt; **普通用户挂载**：在`/etc/fstab`中添加`user`或`<span class="built_in">users</span>`选项（`user`仅允许挂载者卸载，`<span class="built_in">users</span>`允许所有用户操作）。  </span><br><span class="line">&lt;2&gt; **无密码挂载**：通过`/etc/fstab`设置`noauto,x-systemd.automount`实现按需挂载。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 五、故障排查与性能优化  </span></span><br><span class="line"><span class="comment">### 1. 常见错误处理  </span></span><br><span class="line">&lt;1&gt; **设备忙（Device is busy）**：  </span><br><span class="line">• 使用`lsof /mnt`或`fuser -<span class="built_in">mv</span> /mnt`查找占用进程  </span><br><span class="line">• 强制卸载：`umount -f`（可能丢失数据）。  </span><br><span class="line">&lt;2&gt; **文件系统损坏**：  </span><br><span class="line">• 修复ext4：`fsck -y /dev/sdb1`  </span><br><span class="line">• NTFS修复：`ntfsfix /dev/sdb1`。  </span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. 性能调优技巧  </span></span><br><span class="line">&lt;1&gt; **异步写入**：`-o async`提升速度（牺牲数据安全性）  </span><br><span class="line">&lt;2&gt; **NFS缓存优化**：`-o rsize=32768,wsize=32768`调整读写缓冲区  </span><br><span class="line">&lt;3&gt; **ext4日志模式**：`-o journal_checksum`增强数据一致性。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 六、扩展知识：特殊文件系统  </span></span><br><span class="line"><span class="comment">### 1. 伪文件系统  </span></span><br><span class="line">&lt;1&gt; **/proc**：内核与进程信息接口（自动挂载）  </span><br><span class="line">&lt;2&gt; **/sys**：硬件设备与驱动配置  </span><br><span class="line">&lt;3&gt; **cgroup2**：容器资源控制文件系统。  </span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. 加密文件系统挂载  </span></span><br><span class="line">```bash  </span><br><span class="line"><span class="comment"># LUKS加密磁盘  </span></span><br><span class="line"><span class="built_in">sudo</span> cryptsetup luksOpen /dev/sdb1 encrypted_disk  </span><br><span class="line"><span class="built_in">sudo</span> mount /dev/mapper/encrypted_disk /mnt  </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 七、总结</span></span><br><span class="line">通过掌握这些进阶用法，可实现从基础存储管理到企业级高可用方案的设计，例如：  </span><br><span class="line">• 使用`<span class="built_in">bind</span>`+`overlay`实现容器镜像分层  </span><br><span class="line">• 通过NFS+autofs构建分布式存储  </span><br><span class="line">• 结合LUKS加密保障敏感数据安全  </span><br><span class="line"></span><br><span class="line">建议结合`man mount`文档与具体场景测试验证，部分高级功能需特定内核版本支持。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="comment"># （二）跨服务器 mount</span></span><br><span class="line">例：我想把172.16.2.161的/home/czy/code挂载到172.16.4.200的/home/czy/200_code下。</span><br><span class="line"><span class="comment">## 一.修改172.16.2.161的nfs配置文件</span></span><br><span class="line">```shell</span><br><span class="line">vim /etc/exports</span><br><span class="line"></span><br><span class="line"><span class="comment">##添加此行内容，声明允许将/home/czy/code挂载到172.16.4.200</span></span><br><span class="line">/home/czy/code 172.16.4.200 (rw, <span class="built_in">sync</span>, no_root_squash) </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="二-重启nfs服务"><a href="#二-重启nfs服务" class="headerlink" title="二.重启nfs服务"></a>二.重启nfs服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service nfs restart（或者systemctl restart nfs）</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三-在172-16-4-200上执行挂载命令"><a href="#三-在172-16-4-200上执行挂载命令" class="headerlink" title="三.在172.16.4.200上执行挂载命令"></a>三.在172.16.4.200上执行挂载命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t nfs 172.16.2.161:/home/czy/code /home/czy/200_code</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="四-强制卸载"><a href="#四-强制卸载" class="headerlink" title="四.强制卸载"></a>四.强制卸载</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount -l --lazy</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="（三）跨服务器mount且持久化mount"><a href="#（三）跨服务器mount且持久化mount" class="headerlink" title="（三）跨服务器mount且持久化mount"></a>（三）跨服务器mount且持久化mount</h1><h2 id="一、前置准备"><a href="#一、前置准备" class="headerlink" title="一、前置准备"></a>一、前置准备</h2><ol>
+<li><p><strong>安装NFS客户端工具</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ubuntu/Debian</span></span><br><span class="line">apt install nfs-common</span><br><span class="line"><span class="comment"># CentOS/RHEL</span></span><br><span class="line">yum install nfs-utils</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>创建本地挂载目录</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /home/czy/code202</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="二、临时挂载测试"><a href="#二、临时挂载测试" class="headerlink" title="二、临时挂载测试"></a>二、临时挂载测试</h2><ol>
+<li><p><strong>手动挂载远程目录</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t nfs 172.16.2.160:/home/czy/code161 /home/czy/code202</span><br></pre></td></tr></table></figure>
+<p>• 若需要指定NFS版本（如v3/v4），可添加 <code>-o vers=3</code> 参数  </p>
+</li>
+<li><p><strong>验证挂载状态</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -hT | grep code202</span><br><span class="line"><span class="comment"># 输出应包含远程目录容量信息</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="三、持久化配置"><a href="#三、持久化配置" class="headerlink" title="三、持久化配置"></a>三、持久化配置</h3><ol>
+<li><p><strong>编辑 <code>/etc/fstab</code> 文件</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br></pre></td></tr></table></figure>
+<p>添加以下内容：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172.16.2.160:/home/czy/code161  /home/czy/code202  nfs  defaults,nofail,_netdev,auto,timeo=300  0  0</span><br></pre></td></tr></table></figure>
+<p>• <strong>关键选项说明</strong>：<br>  ◦ <code>nofail</code>：挂载失败不阻塞系统启动<br>  ◦ <code>_netdev</code>：等待网络就绪后再挂载<br>  ◦ <code>auto</code>：系统启动时自动挂载<br>  ◦ <code>timeo=300</code>：超时时间（单位：0.1秒）  </p>
+</li>
+<li><p><strong>应用配置</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -a  <span class="comment"># 验证配置是否正确</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="四、防故障增强措施（可选）"><a href="#四、防故障增强措施（可选）" class="headerlink" title="四、防故障增强措施（可选）"></a>四、防故障增强措施（可选）</h3><ol>
+<li><p><strong>系统服务依赖配置</strong><br>创建 systemd 服务依赖文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /etc/systemd/system/local-fs.target.requires</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /usr/lib/systemd/system/remote-fs.target /etc/systemd/system/local-fs.target.requires/</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>日志监控与自动恢复</strong><br>添加定时任务检测挂载状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"><span class="comment"># 每5分钟检测一次，失败则尝试重挂</span></span><br><span class="line">*/5 * * * * /bin/mountpoint -q /home/czy/code202 || /bin/mount /home/czy/code202</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="五、故障场景应对"><a href="#五、故障场景应对" class="headerlink" title="五、故障场景应对"></a>五、故障场景应对</h3><ol>
+<li><p><strong>启动时远程不可达</strong><br>• 系统会跳过挂载继续启动，日志记录于 <code>/var/log/syslog</code><br>• 网络恢复后执行 <code>sudo mount /home/czy/code202</code> 手动激活</p>
+</li>
+<li><p><strong>文件系统损坏处理</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> umount /home/czy/code202</span><br><span class="line"><span class="built_in">sudo</span> mount -t nfs -o remount,soft 172.16.2.160:/home/czy/code161 /home/czy/code202</span><br></pre></td></tr></table></figure>
+<p>• <code>soft</code> 选项允许超时后返回错误而非无限重试</p>
+</li>
+</ol>
+<h3 id="六、补充建议"><a href="#六、补充建议" class="headerlink" title="六、补充建议"></a>六、补充建议</h3><ol>
+<li><p><strong>权限管理</strong><br>• 确保远程服务器NFS导出配置允许客户端IP访问（<code>/etc/exports</code>）  </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/czy/code161 172.16.4.202(rw,<span class="built_in">sync</span>,no_subtree_check)</span><br></pre></td></tr></table></figure>
+<p>• 本地目录权限建议设置为 <code>sudo chown -R czy:czy /home/czy/code202</code>  </p>
+</li>
+<li><p><strong>备份方案</strong><br>建议同步配置 rsync 增量备份：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz --delete /home/czy/code202/ user@backup-server:/backup/code202/</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h1 id="（四）其他情况"><a href="#（四）其他情况" class="headerlink" title="（四）其他情况"></a>（四）其他情况</h1><h2 id="一-iso-文件挂载"><a href="#一-iso-文件挂载" class="headerlink" title="一.iso 文件挂载"></a>一.iso 文件挂载</h2><p>直接挂载就行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /path/to/file.iso /mnt</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="二-linux-物理机U盘挂载"><a href="#二-linux-物理机U盘挂载" class="headerlink" title="二.linux 物理机U盘挂载"></a>二.linux 物理机U盘挂载</h2><h3 id="1-确定USB设备的设备节点"><a href="#1-确定USB设备的设备节点" class="headerlink" title="1.确定USB设备的设备节点"></a>1.确定USB设备的设备节点</h3><p>查看所有块设备：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#或fdisk -l</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#通常，USB设备会被识别为/dev/sdX（其中X是一个字母，如a、b、c等），而具体的分区则可能是/dev/sdX1、/dev/sdX2等。</span></span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-挂载-U-盘"><a href="#2-挂载-U-盘" class="headerlink" title="2.挂载 U 盘"></a>2.挂载 U 盘</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdb1 /mnt/usb</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="三-tmp挂载"><a href="#三-tmp挂载" class="headerlink" title="三./tmp挂载"></a>三./tmp挂载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount ｜ grep &quot;/tmp&quot;</span><br></pre></td></tr></table></figure>
+<p>可以看到 /tmp 的权限存在 noexec，这导致了在 /tmp 下临时存储的可执行文件（如 java）无权限执行。</p>
+<h4 id="1-临时重新挂载（适用于-tmpfs）"><a href="#1-临时重新挂载（适用于-tmpfs）" class="headerlink" title="1.临时重新挂载（适用于 tmpfs）"></a>1.临时重新挂载（适用于 tmpfs）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o remount,exec,suid,dev,size=16G /tmp</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将 /tmp 文件系统重新挂载（remount），并更改其挂载选项。<ul>
+<li>remount 表示重新挂载已经挂载的文件系统，而不需要先卸载它。通过这种方式可以修改挂载选项。</li>
+</ul>
+</li>
+<li>启用了以下特性：<ul>
+<li>exec：允许执行文件。</li>
+<li>suid：允许 SUID 和 SGID 位生效。</li>
+<li>dev：允许使用设备文件。</li>
+<li>size=16G：将文件系统的大小限制为 16GB（适用于 tmpfs 类型的文件系统）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-永久修改挂载配置​​"><a href="#2-永久修改挂载配置​​" class="headerlink" title="2.永久修改挂载配置​​"></a>2.永久修改挂载配置​​</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/fstab 示例（tmpfs 类型）</span></span><br><span class="line">tmpfs /tmp tmpfs defaults,<span class="built_in">exec</span>,suid,size=16G 0 0</span><br></pre></td></tr></table></figure>
+
+<p>修改后执行 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -a    #重新加载配置</span><br></pre></td></tr></table></figure>
+<hr>
+
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>czy
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2025/04/10/KB%E5%91%BD%E4%BB%A4%E5%90%88%E9%9B%86/mount%E5%91%BD%E4%BB%A4/" title="mount 命令">http://example.com/2025/04/10/KB命令合集/mount命令/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/09/KB_%E8%84%9A%E6%9C%AC/shell%E8%84%9A%E6%9C%AC/" rel="prev" title="shell脚本">
+                  <i class="fa fa-chevron-left"></i> shell脚本
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/04/13/KB%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/%E9%80%9A%E7%94%A8%E5%B7%A5%E5%85%B7/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next" title="正则表达式">
+                  正则表达式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">czy</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
